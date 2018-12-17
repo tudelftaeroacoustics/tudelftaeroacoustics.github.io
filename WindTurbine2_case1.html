@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <title>Mooc</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/dashboard.css" rel="stylesheet">
+  <link href="css/bootstrap-slider.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-12" href="#">Aeroacoustics: Noise Reduction Strategies for Mechanical Systems</a>
+    <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+    <!-- <div><img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXUAAADmCAYAAAAqeBWRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iSWxsdXN0cmF0b3IiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0RBODkxN0RFQ0U1MTFFNDlCRDU4NTc3RjY5REE3QzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0RBODkxN0VFQ0U1MTFFNDlCRDU4NTc3RjY5REE3QzIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDREE4OTE3QkVDRTUxMUU0OUJENTg1NzdGNjlEQTdDMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDREE4OTE3Q0VDRTUxMUU0OUJENTg1NzdGNjlEQTdDMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoLRMCUAAA6ZSURBVHja7N3dVdtIHwfgyZ7cL3u7N3EqeEkFmAoC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" alt=""></div> -->
+    <!-- <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul> -->
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+			<!--
+            <li class="nav-item">
+              <a class="nav-link " href="index.html" target="_self">
+                <span data-feather="file"></span>
+                Jet<span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="WindTurbine1.html" target="_self">
+                <span data-feather="file"></span>
+                Wind Turbine-1
+              </a>
+            </li>
+			-->
+            <li class="nav-item">
+              <a class="nav-link active" href="WindTurbine2.html" target="_self">
+                <span data-feather="file"></span>
+                Wind Turbine-2
+              </a>
+            </li>
+			<!--
+            <li class="nav-item">
+              <a class="nav-link" href="Propeller.html" target="_self">
+                <span data-feather="file"></span>
+                Propeller
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="WingFlap.html" target="_self">
+                <span data-feather="file"></span>
+                Wing-Flap
+              </a>
+            </li>
+			-->
+          </ul>
+        </div>
+      </nav>
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Wind Turbine-2</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Frequency 𝝎</button>
+              <!--
+			  <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Aspect ratio (AR)</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 3: Angle of attack, 𝜶</button>
+			  -->
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="blockquote text-left">
+          <p class="mb-0">
+			Trailing edge noise is generated by the scattering of the turbulent boundary layer passing by the trailing edge of the blade, and the power spectrum density of far field sound is cited as:
+          </p>
+        </blockquote>
+        <div class="row">
+          <!-- 公式图片 -->
+          <div class="col"><img src="img/wind_turbine_2/formula.png" alt=""></div>
+          <!-- 弹框图片 -->
+          <div class="col">
+            <img style="width:270px;height:100px" src="img/click.png" alt="" data-toggle="modal" data-target="#exampleModal">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:30px;">
+          <!-- <div class=""><img src="img/jet/jet-case1.png" alt=""></div> -->
+          <div class="col">
+            <h4 id="caseTitle" class="text-primary">Case 1: Frequency 𝝎</h4>
+          </div>
+
+        </div>
+        <!-- <div style="width:100%;height:1500px; background-color:goldenrod;"></div> -->
+        <div class="row" style="margin-bottom:30px;">
+          <div class="col-12">
+            <h6 id="caseDesc">NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s.</h6>
+          </div>
+        </div>
+
+        <div id="container" style="width: 60% margin: 0 auto"></div>
+
+        <!-- silder bar -->
+        <div id="sliderCase1Area">
+          <div class="row">
+            <div class="col-1">Frequency</div>
+            <div class="col-11">
+              <input id="sliderCase11" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="59" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+        </div>
+
+        <div id="sliderCase2Area" style="display:none">
+          <div class="row">
+            <div class="col-1">AR = 0.5
+            </div>
+            <div class="col-11">
+              <input id="sliderCase21" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="21" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-1">AR = 1
+            </div>
+            <div class="col-11">
+              <input id="sliderCase22" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="21" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-1">AR = 3
+            </div>
+            <div class="col-11">
+              <input id="sliderCase23" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="20" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-1">AR = 5
+            </div>
+            <div class="col-11">
+              <input id="sliderCase24" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="20" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+        </div>
+
+        <div id="sliderCase3Area" style="display:none">
+          <div class="row">
+            <div class="col-1">Frequency 𝜶= 0
+            </div>
+            <div class="col-11">
+              <input id="sliderCase31" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="13" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-1">Frequency 𝜶= 5.4
+            </div>
+            <div class="col-11">
+              <input id="sliderCase32" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="12" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-1">Frequency 𝜶= 10.8
+            </div>
+            <div class="col-11">
+              <input id="sliderCase33" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="13" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-1">Frequency 𝜶= 14.4
+            </div>
+            <div class="col-11">
+              <input id="sliderCase34" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
+                data-slider-max="13" data-slider-step="1" data-slider-value="-1" />
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    </main>
+  </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" style="top:100px;left:-200px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <img src="img/wind_turbine_2/explain.png" alt="">
+    </div>
+  </div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <script src="js/bootstrap-slider.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+
+  <!-- icons -->
+  <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+  <script>
+    feather.replace();
+  </script>
+  <!-- icons end -->
+
+  <script>
+    var sidebtn = function (nav) {
+      console.log($(nav));
+      // let navTitle = $(nav).text().trim();
+      // if('Wind Turbine' === navTitle){
+      //   $(nav).
+      // }
+    }
+  </script>
+
+
+
+  <!-- 初始化数据 -->
+  <script>
+    let cases = [{
+        title: 'Case 1: Frequency 𝝎',
+        desc: 'NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s.'
+      },
+      {
+        title: 'Case 2: Aspect ratio (AR)',
+        desc: 'NACA0012 airfoil, with AR of 0.5, 1, 3, and 5.'
+      },
+      {
+        title: 'Case 3: Angle of attack, 𝜶',
+        desc: 'NACA0012 airfoil, with angle of attack of 0, 5.4, 10.8, and 14.4.'
+      }
+    ]
+    let case11Data = [
+      [301.01, 44.50],
+      [397.73, 42.22],
+      [498.29, 41.19],
+      [595.64, 42.43],
+      [700.94, 43.36],
+      [796.94, 43.00],
+      [900.44, 41.19],
+      [998.44, 39.69],
+      [1135.18, 40.18],
+      [1243.06, 40.88],
+      [1369.75, 40.03],
+      [1490.57, 37.93],
+      [1586.88, 37.62],
+      [1684.13, 38.14],
+      [1826.95, 38.24],
+      [1914.79, 37.57],
+      [1975.68, 36.59],
+      [2070.67, 35.66],
+      [2156.68, 35.71],
+      [2225.27, 36.18],
+      [2324.97, 36.23],
+      [2413.98, 35.71],
+      [2490.74, 35.04],
+      [2537.97, 34.26],
+      [2635.13, 33.75],
+      [2770.49, 34.16],
+      [2876.55, 34.32],
+      [2958.75, 33.75],
+      [3043.30, 32.87],
+      [3140.08, 32.14],
+      [3199.62, 31.78],
+      [3301.37, 32.30],
+      [3385.10, 32.66],
+      [3503.70, 31.99],
+      [3592.56, 31.06],
+      [3660.68, 30.54],
+      [3800.82, 30.44],
+      [3921.70, 30.75],
+      [4071.83, 29.92],
+      [4214.49, 28.89],
+      [4458.80, 29.20],
+      [4746.91, 27.49],
+      [5006.38, 27.80],
+      [5296.60, 26.20],
+      [5568.67, 26.41],
+      [5854.71, 24.81],
+      [6022.01, 25.27],
+      [6391.08, 23.62],
+      [6573.72, 23.98],
+      [6933.05, 22.27],
+      [7108.89, 22.89],
+      [7474.04, 21.50],
+      [7760.16, 21.65],
+      [7956.97, 20.26],
+      [8210.02, 20.67],
+      [8391.92, 19.84],
+      [8713.18, 19.59],
+      [9160.74, 18.66],
+      [9481.71, 18.50],
+      [9631.29, 17.68],
+      [10000.00, 17.47]
+
+    ];
+    let case21Data = [
+      [99.30, 30.97],
+      [119.12, 32.06],
+      [152.06, 33.27],
+      [196.74, 34.34],
+      [237.09, 35.07],
+      [289.47, 36.46],
+      [310.06, 36.99],
+      [391.83, 35.95],
+      [489.30, 36.68],
+      [618.71, 34.29],
+      [781.42, 34.56],
+      [994.22, 33.27],
+      [1243.02, 31.33],
+      [1556.58, 30.75],
+      [1984.80, 29.56],
+      [2493.04, 27.17],
+      [3130.81, 25.22],
+      [3951.28, 22.12],
+      [4940.45, 20.00],
+      [6236.03, 16.60],
+      [7940.94, 13.41],
+      [9981.71, 9.36]
+    ];
+    let case22Data = [
+      [100.44, 36.42],
+      [124.76, 37.79],
+      [157.02, 38.81],
+      [198.51, 39.67],
+      [246.56, 40.23],
+      [313.10, 41.38],
+      [395.82, 39.87],
+      [493.81, 38.11],
+      [624.29, 37.18],
+      [792.75, 38.51],
+      [993.39, 36.29],
+      [1239.31, 35.41],
+      [1566.77, 33.91],
+      [1980.75,33.24],
+      [2471.11, 30.99],
+      [3110.25, 29.00],
+      [3914.71, 25.77],
+      [4927.23, 23.60],
+      [6147.02, 20.20],
+      [7840.29, 17.23],
+      [8913.50, 15.11],
+      [9955.86, 12.85]
+    ];
+    let case23Data = [
+      [101.12, 42.13],
+      [125.68, 43.42],
+      [159.73, 44.71],
+      [201.19, 45.24],
+      [251.19, 45.60],
+      [315.00, 45.11],
+      [402.10, 43.60],
+      [495.38, 41.96],
+      [626.77, 42.27],
+      [793.01, 43.38],
+      [998.89, 41.07],
+      [1258.23, 40.22],
+      [1570.89, 38.62],
+      [1996.37, 38.09],
+      [2492.45, 35.96],
+      [3139.55, 33.96],
+      [3972.25, 30.49],
+      [4981.38, 28.49],
+      [6219.21, 24.93],
+      [7938.88, 22.22],
+      [9955.71, 17.91]
+    ];
+    let case24Data = [
+      [99.78, 44.55],
+      [125.00, 46.03],
+      [157.97, 46.98],
+      [200.52, 47.61],
+      [246.79, 47.78],
+      [313.27, 47.33],
+      [395.91, 45.66],
+      [493.77, 43.72],
+      [621.28, 44.40],
+      [788.65, 45.57],
+      [992.30, 43.18],
+      [1237.56, 42.36],
+      [1564.03, 40.74],
+      [1985.37, 40.15],
+      [2487.04, 37.81],
+      [3129.27, 35.91],
+      [3902.72, 32.26],
+      [4976.02, 30.14],
+      [6205.91, 26.67],
+      [7877.76, 23.65],
+      [9955.92, 19.32]
+    ];
+
+    let case31Data = [
+      [501.19, 58.94],
+      [627.24, 57.53],
+      [791.99, 65.10],
+      [1000.00, 62.53],
+      [1255.21, 62.53],
+      [1584.89, 65.00],
+      [2001.16, 61.49],
+      [2519.31, 61.24],
+      [3162.28, 60.21],
+      [3981.07, 59.33],
+      [5011.87, 57.78],
+      [6328.23, 54.95],
+      [7966.77, 52.06],
+      [9941.13, 50.77]
+    ];
+    let case32Data = [
+      [498.24, 70.54],
+      [627.24, 63.19],
+      [791.99, 63.80],
+      [994.11, 62.36],
+      [1251.51, 62.77],
+      [1584.89, 62.30],
+      [2001.16, 61.99],
+      [2511.89, 60.70],
+      [3171.63, 60.39],
+      [3992.84, 58.49],
+      [5041.55, 57.20],
+      [6328.23, 54.21],
+      [7966.77, 50.56]
+    ];
+    let case33Data = [
+      [498.26, 69.31],
+      [627.07, 68.47],
+      [789.157, 67.91],
+      [990.347, 66.69],
+      [1249.95, 66.18],
+      [1582.61, 63.89],
+      [1985.89, 63.33],
+      [2514.03, 62.11],
+      [3155.69, 59.31],
+      [3983.32, 58.09],
+      [5014.00, 56.06],
+      [6329.52, 54.27],
+      [7967.81, 51.78],
+      [9945.34, 47.66]
+    ];
+
+    let case34Data = [
+      [494.46, 67.95],
+      [623.77, 66.98],
+      [784.04, 68.37],
+      [988.69, 68.68],
+      [1247.99, 65.66],
+      [1574.89, 63.51],
+      [1980.82, 62.70],
+      [2507.18, 60.34],
+      [3164.21, 57.89],
+      [3967.33, 57.74],
+      [5022.25, 54.92],
+      [6336.16, 53.65],
+      [7971.58, 51.86],
+      [9973.68, 48.94]
+    ];
+  </script>
+
+  <!--  case 按钮切换 -->
+  <script>
+    function caseAction(caseBtn) {
+      console.log('case', $(caseBtn).text());
+      let btnText = $(caseBtn).text().trim();
+      if (cases[0].title === btnText) {
+        console.log('case', "Case 1");
+        $('.btn-outline-secondary').removeClass('active');
+        $('.btn-outline-secondary').eq(0).addClass('active');
+        $('#caseTitle').text(cases[0].title);
+        $('#caseDesc').text(cases[0].desc);
+        $('#sliderCase1Area').show();
+        $('#sliderCase2Area').hide();
+        $('#sliderCase3Area').hide();
+        $('#sliderCase4Area').hide();
+        //设置hightcharts
+        data = [];
+        data11 = [];
+        data21 = [];
+        data22 = [];
+        data23 = [];
+        data24 = [];
+        data31 = [];
+        data32 = [];
+        data33 = [];
+        data34 = [];
+        if (chart.series.length === 1) {
+          let s = chart.series[0];
+          chart.series[0] = [];
+          chart.series[0].push(s);
+        } else {
+          chart.series[1].remove();
+          chart.series[1].remove();
+          chart.series[1].remove();
+          chart.series[0].remove();
+          chart.addSeries({
+            data: [],
+            name: 'Frequency',
+            marker: {
+              symbol: 'circle',
+              fillColor: 'red'
+            },
+          });
+        }
+
+
+        chart.series[0].setData(data);
+        chart.yAxis[0].update({
+          max: 50,
+          min: 15
+        });
+        chart.xAxis[0].update({
+          max: 10010,
+          min: 300
+        });
+
+
+        // $('#sliderCase1').attr('data-slider-value',-1);
+
+      } else if (cases[1].title === btnText) {
+
+        console.log('case', "Case 2");
+        chart.series[0].name = 'AR 0.5';
+        data11 = [];
+        data21 = [];
+        data22 = [];
+        data23 = [];
+        data24 = [];
+        data31 = [];
+        data32 = [];
+        data33 = [];
+        data34 = [];
+        chart.series[0].setData(data21);
+        if (chart.series.length === 1) {
+          chart.addSeries({
+            data: [],
+            name: 'AR 1',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#70C1B3'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: 'AR 3',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#247BA0'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: 'AR 5',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#D1C667'
+            },
+          });
+          // colors: ['#70C1B3', '#247BA0', '#F3FFBD', '#B2DBBF']
+
+
+        } else {
+          chart.series[1].remove();
+          chart.series[1].remove();
+          chart.series[1].remove();
+          
+          chart.addSeries({
+            data: [],
+            name: 'AR 1',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#70C1B3'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: 'AR 3',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#247BA0'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: 'AR 5',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#D1C667'
+            },
+          });
+
+        }
+
+        $('.btn-outline-secondary').removeClass('active');
+        $('.btn-outline-secondary').eq(1).addClass('active');
+        $('#caseTitle').text(cases[1].title);
+        $('#caseDesc').text(cases[1].desc);
+        $('#sliderCase1Area').hide();
+        $('#sliderCase2Area').show();
+        $('#sliderCase3Area').hide();
+        // $('#sliderCase21').silder({value:0});
+
+        chart.xAxis[0].update({
+          max: 10000,
+          min: 99
+        });
+        chart.yAxis[0].update({
+          max: 50,
+          min: 0
+        });
+
+
+
+      } else if (cases[2].title === btnText) {
+        console.log('case', "Case 3");
+
+        data11 = [];
+        data21 = [];
+        data22 = [];
+        data23 = [];
+        data24 = [];
+        data31 = [];
+        data32 = [];
+        data33 = [];
+        data34 = [];
+        chart.series[0].setData(data31);
+        chart.series[0].name = '𝜶= 0';
+        if (chart.series.length === 1) {
+
+          chart.addSeries({
+            data: [],
+            name: '𝜶= 5.4',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#70C1B3'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: '𝜶= 10.8',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#247BA0'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: '𝜶= 14.4',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#D1C667'
+            },
+          });
+          chart.redraw();
+
+        } else {
+          chart.series[1].remove();
+          chart.series[1].remove();
+          chart.series[1].remove();
+          chart.addSeries({
+            data: [],
+            name: '𝜶= 5.4',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#70C1B3'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: '𝜶= 10.8',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#247BA0'
+            },
+          });
+          chart.addSeries({
+            data: [],
+            name: '𝜶= 14.4',
+            marker: {
+              symbol: 'circle',
+              fillColor: '#D1C667'
+            },
+          });
+        }
+
+        $('.btn-outline-secondary').removeClass('active');
+        $('.btn-outline-secondary').eq(2).addClass('active');
+        $('#caseTitle').text(cases[2].title);
+        $('#caseDesc').text(cases[2].desc);
+        $('#sliderCase1Area').hide();
+        $('#sliderCase2Area').hide();
+        $('#sliderCase3Area').show();
+
+
+        chart.xAxis[0].update({
+          max: 10000,
+          min: 400
+        });
+        chart.yAxis[0].update({
+          max: 80,
+          min: 40
+        });
+
+
+
+      }
+    }
+  </script>
+
+
+
+  <!-- 滚动条事件 -->
+  <script>
+    let data = [],
+      data11 = [],
+      data21 = [],
+      data22 = [],
+      data23 = [],
+      data24 = [],
+      data31 = [],
+      data32 = [],
+      data33 = [],
+      data34 = [];
+    $("#sliderCase11").slider();
+    $("#sliderCase21").slider();
+    $("#sliderCase22").slider();
+    $("#sliderCase23").slider();
+    $("#sliderCase24").slider();
+    $("#sliderCase31").slider();
+    $("#sliderCase32").slider();
+    $("#sliderCase33").slider();
+    $("#sliderCase34").slider();
+
+    $("#sliderCase11").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data = [];
+        chart.series[0].setData(data);
+      } else {
+        data.push(case11Data[slideEvt.value]);
+        chart.series[0].setData(data);
+        // console.log('sliderCase1,data',data);
+      }
+    });
+
+    $("#sliderCase21").on("slide", function (slideEvt) {
+      console.log('sliderCase21', slideEvt.value)
+      if (-1 === slideEvt.value) {
+        data21 = [];
+        chart.series[0].setData(data21);
+      } else {
+        data21.push(case21Data[slideEvt.value]);
+        chart.series[0].setData(data21);
+        // console.log('sliderCase1,data',data);
+      }
+    });
+
+    $("#sliderCase22").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data22 = [];
+        chart.series[1].setData(data22);
+      } else {
+        data22.push(case22Data[slideEvt.value]);
+        chart.series[1].setData(data22);
+      }
+    });
+
+    $("#sliderCase23").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data23 = [];
+        chart.series[2].setData(data23);
+      } else {
+        data23.push(case23Data[slideEvt.value]);
+        chart.series[2].setData(data23);
+      }
+    });
+
+    $("#sliderCase24").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data24 = [];
+        chart.series[3].setData(data24);
+      } else {
+        data24.push(case24Data[slideEvt.value]);
+        chart.series[3].setData(data24);
+      }
+    });
+
+    $("#sliderCase31").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data31 = [];
+        chart.series[0].setData(data31);
+      } else {
+        data31.push(case31Data[slideEvt.value]);
+        chart.series[0].setData(data31);
+      }
+    });
+
+
+    $("#sliderCase32").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data32 = [];
+        chart.series[1].setData(data32);
+      } else {
+        data32.push(case32Data[slideEvt.value]);
+        chart.series[1].setData(data32);
+      }
+    });
+
+    $("#sliderCase33").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data33 = [];
+        chart.series[2].setData(data33);
+      } else {
+        data33.push(case33Data[slideEvt.value]);
+        chart.series[2].setData(data33);
+      }
+    });
+
+    $("#sliderCase34").on("slide", function (slideEvt) {
+      if (-1 === slideEvt.value) {
+        data34 = [];
+        chart.series[3].setData(data34);
+      } else {
+        data34.push(case34Data[slideEvt.value]);
+        chart.series[3].setData(data34);
+      }
+    });
+  </script>
+
+  <!-- highcharts -->
+  <script>
+    Highcharts.setOptions({
+	  colors: ['#70C1B3', '#247BA0', '#F3FFBD', '#D1C667']
+    });
+    var chart = Highcharts.chart('container', {	  
+	  credits: {
+        enabled: false
+      }, //去掉版权
+      chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+      },
+      title: {
+        text: ' '
+      },
+      subtitle: {
+        text: ' '
+      },
+      xAxis: {
+        title: {
+          enabled: true,
+          text: 'Frequency'
+        },
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true,
+        max: 10010,
+        min: 300
+      },
+      yAxis: {
+        title: {
+          text: 'SPL/dB'
+        },
+        max: 50,
+        min: 15
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 1000,
+        y: 1,
+        floating: true,
+        // backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+        borderWidth: 1
+      },
+      plotOptions: {
+        scatter: {
+          marker: {
+            radius: 5,
+            fillColor: '#FF1654',
+            states: {
+              hover: {
+                enabled: true,
+                lineColor: 'rgb(100,100,100)'
+              }
+            }
+          },
+          states: {
+            hover: {
+              marker: {
+                enabled: false
+              }
+            }
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: 'SPL/dB	:{point.x}, value:{point.y}'
+          }
+        }
+      },
+      series: [{
+        name: 'Frequency:',
+        color: 'rgba(223, 83, 83, .5)',
+        data: []
+      }]
+    });
+  </script>
+
+</body>
+
+</html>

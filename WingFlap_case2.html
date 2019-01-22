@@ -60,7 +60,7 @@
 			<li class="nav-item">
 				<a class="nav-link active"  href="WingFlap.html"  target="_self">
 					<span data-feather="file"></span>
-					Wing-Flap
+                  Cavity Noise
 				</a>
 			</li>
 
@@ -70,19 +70,19 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Wing-Flap</h1>
+          <h1 class="h2">Cavity Noise</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
 				<!--
 				<button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Mach Number</button>
 				-->  
-				<button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Cavity Shape</button>
+				<button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 2: Cavity Shape</button>
             </div>
           </div>
         </div>
 
         <blockquote class="blockquote text-left">
-          <p class="mb-0">An empirical model for aeroacoustic resonance in a cavity can be expressed based upon Rossiter’s formula as:
+          <p class="mb-0">In the present simulation, an empirical model for aeroacoustic resonance in a cavity is expressed based upon Rossiter’s formula, and all parameters are explained by clicking the nomenclature button besides the formula. At the above right location, you can choose different cases to have a look at the effects of Mach number and cavity shape.
           </p>
         </blockquote>
         <div class="row">
@@ -113,7 +113,7 @@
         <!-- silder bar -->
         
 
-        <div id="sliderCase1Area">
+        <div id="sliderCase1Area" style="display:none">
           <div class="row">
             <div class="col-1">Mode1
             </div>
@@ -142,7 +142,9 @@
           </div>
 
         </div>
-        <div id="sliderCase2Area"  style="display:none">
+
+
+        <div id="sliderCase2Area">
           <div class="row">
             <div class="col-1">Frequency</div>
             <div class="col-11">
@@ -310,6 +312,7 @@
         $('.btn-outline-secondary').eq(0).addClass('active');
         $('#caseTitle').text(cases[0].title);
         $('#caseDesc').text(cases[0].desc);
+
         $('#sliderCase1Area').show();
         $('#sliderCase2Area').hide();
         // $('#sliderCase21').silder({value:0});
@@ -353,7 +356,7 @@
           chart.series[0].remove();
           chart.addSeries({
             data: [],
-            name: 'Mach Number',
+            name: 'L/D',
             marker:{symbol:'circle',fillColor:'red'},
           });
         }
@@ -450,7 +453,7 @@
       xAxis: {
         title: {
           enabled: true,
-          text: 'Mach number'
+          text: 'L/D'
         },
         startOnTick: true,
         endOnTick: true,
@@ -496,7 +499,7 @@
           },
           tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: 'Mach number:{point.x}, St:{point.y}'
+            pointFormat: 'L/D:{point.x}, St:{point.y}'
           }
         }
       },
@@ -518,6 +521,9 @@
       name: 'Mode3',
       marker:{symbol:'circle',fillColor:'#247BA0'}
     });
+
+    caseAction($('.btn-outline-secondary'));
+
   </script>
 
 </body>

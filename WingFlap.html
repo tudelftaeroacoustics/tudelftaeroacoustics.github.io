@@ -35,7 +35,8 @@
             <li class="nav-item">
               <a class="nav-link"   href="index.html" target="_self">
                 <span data-feather="file"></span>
-                Jet<span class="sr-only">(current)</span>
+                Jet Noise
+                <span class="sr-only">(current)</span>
               </a>
             </li>
 
@@ -44,26 +45,26 @@
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine1.html"  target="_self">
                 <span data-feather="file"></span>
-                Wind Turbine-1
+                Wind Turbine Noise-1
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine2.html"  target="_self">
                 <span data-feather="file"></span>
-                Wind Turbine-2
+                Wind Turbine Noise-2
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link"  href="Propeller.html"  target="_self">
                 <span data-feather="file"></span>
-                Propeller
+                Propeller Noise
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active"  href="WingFlap.html"  target="_self">
                 <span data-feather="file"></span>
-                Wing-Flap
+                Cavity Noise
               </a>
             </li>
 
@@ -73,7 +74,7 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Wing-Flap</h1>
+          <h1 class="h2">Cavity Noise</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Mach Number</button>
@@ -361,7 +362,7 @@
           chart.series[0].remove();
           chart.addSeries({
             data: [],
-            name: 'Mach Number',
+            name: 'L/D',
             marker:{symbol:'circle',fillColor:'red'},
           });
         }
@@ -458,7 +459,7 @@
       xAxis: {
         title: {
           enabled: true,
-          text: 'Mach number'
+          text: 'L/D'
         },
         startOnTick: true,
         endOnTick: true,
@@ -504,7 +505,7 @@
           },
           tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: 'Mach number:{point.x}, St:{point.y}'
+            pointFormat: 'L/D:{point.x}, St:{point.y}'
           }
         }
       },

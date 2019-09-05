@@ -71,26 +71,26 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Wind Turbine Noise-2</h1>
+          <h1 class="h2">Wind Turbine Noise - 2</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Frequency 𝝎</button>
               <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Aspect ratio (AR)</button>
-              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 3: Angle of attack, 𝜶</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 3: Angle of attack 𝜶</button>
             </div>
           </div>
         </div>
 
         <blockquote class="blockquote text-left">
-          <p class="mb-0">In this simulation, let's have a look at the calculation of trailing edge noise of a wind turbine based on Amiet's model. The power spectrum density of the far field sound is expressed below, and all parameters are explained by clicking the nomenclature button besides the formula. The effects of the aspect ratio and angle of attack can be observed by different study cases at the above right location. 
+          <p class="mb-0"><font size="3">In this simulation, let's have a look at the calculation of trailing edge noise of a wind turbine based on Amiet's model. The power spectrum density of the far field sound is expressed below, and all parameters are explained by clicking the nomenclature button besides the formula. The effects of the aspect ratio and angle of attack can be observed by different study cases at the above right location. 
           </p>
         </blockquote>
         <div class="row">
           <!-- 公式图片 -->
-          <div class="col"><img src="img/wind_turbine_2/formula.png" alt=""></div>
+          <div class="col"><img style="width:840px;height:140px" src="img/wind_turbine_2/formula.png" alt=""></div>
           <!-- 弹框图片 -->
           <div class="col">
-            <img style="width:270px;height:100px" src="img/click.png" alt="" data-toggle="modal" data-target="#exampleModal">
+            <img style="width:180px;height:70px" src="img/click.png" alt="" data-toggle="modal" data-target="#exampleModal">
           </div>
         </div>
 
@@ -213,7 +213,7 @@
   <div class="modal fade" style="top:100px;left:-200px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <img src="img/wind_turbine_2/explain.png" alt="">
+      <img style="width:800px;height:500px" src="img/wind_turbine_2/explain.png" alt="">
     </div>
   </div>
 
@@ -258,7 +258,7 @@
         desc: 'NACA0012 airfoil, with AR of 0.5, 1, 3, and 5.'
       },
       {
-        title: 'Case 3: Angle of attack, 𝜶',
+        title: 'Case 3: Angle of attack 𝜶',
         desc: 'NACA0012 airfoil, with angle of attack of 0, 5.4, 10.8, and 14.4.'
       }
     ]

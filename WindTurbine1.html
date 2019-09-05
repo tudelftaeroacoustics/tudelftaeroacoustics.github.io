@@ -64,11 +64,11 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Wind Turbine Noise-1</h1>
+          <h1 class="h2">Wind Turbine Noise - 1</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Frequency 𝝎</button>
-              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Reference Location,xTE</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Reference Location, xTE</button>
               <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 3: Airfoil</button>
               <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 4: Incoming wind velocity</button>
             </div>
@@ -76,15 +76,15 @@
         </div>
 
         <blockquote class="blockquote text-left">
-          <p class="mb-0">For the noise computation of a wind turbine based on Amiet's trailing edge noise model, the spectrum of fluctuating wall pressure is one of the most important input parameters, which is investigated in this simulation. By clicking the nomenclature button besides the formula, you can find the explanations of all the parameters. And at the above right location you can choose different cases to see how these parameters play a role in the pressure fluctuations.
+          <p class="mb-0"><font size="3">For the noise computation of a wind turbine based on Amiet's trailing edge noise model, the spectrum of fluctuating wall pressure is one of the most important input parameters, which is investigated in this simulation. By clicking the nomenclature button besides the formula, you can find the explanations of all the parameters. And at the above right location you can choose different cases to see how these parameters play a role in the pressure fluctuations.
           </p>
         </blockquote>
         <div class="row">
           <!-- 公式图片 -->
-          <div class="col"><img src="img/wind_turbine_1/formula.png" alt=""></div>
+          <div class="col"><img style="width:660px;height:110px" src="img/wind_turbine_1/formula1.png" alt=""></div>
           <!-- 弹框图片 -->
           <div class="col">
-            <img style="width:270px;height:100px" src="img/click.png" alt="" data-toggle="modal" data-target="#exampleModal">
+            <img style="width:180px;height:70px" src="img/click.png" alt="" data-toggle="modal" data-target="#exampleModal">
           </div>
         </div>
 
@@ -98,9 +98,7 @@
         <!-- <div style="width:100%;height:1500px; background-color:goldenrod;"></div> -->
         <div class="row" style="margin-bottom:30px;">
           <div class="col-12">
-            <h6 id="caseDesc">The jet is operating at Mj = 0.911 with D = 0.0508m, and the observer location is at 90
-              deg to the jet
-              axis at a distance of 72D.</h6>
+            <h6 id="caseDesc">NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s.</h6>
           </div>
         </div>
 
@@ -194,7 +192,7 @@
   <div class="modal fade" style="top:100px;left:-200px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <img src="img/wind_turbine_1/explain.png" alt="">
+      <img style="width:800px;height:600px" src="img/wind_turbine_1/explain.png" alt="">
     </div>
   </div>
 
@@ -235,7 +233,7 @@
         desc: 'NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s.'
       },
       {
-        title: 'Case 2: Reference Location,xTE',
+        title: 'Case 2: Reference Location, xTE',
         desc: 'NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s, for two chordwise positions upstream of the trailing edge (TE).'
       },
       {
@@ -713,8 +711,8 @@
       },
       yAxis: {
         title: {
-          text: 'Phi_pp[dB/Hz]'
-        },
+          text: 'ϕ_pp [dB/Hz]'
+         },
         max: 83,
         min: 68
       },

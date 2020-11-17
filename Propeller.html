@@ -39,7 +39,7 @@
               </a>
             </li>
 
-            
+
 
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine1.html"  target="_self">
@@ -115,7 +115,7 @@
         <div id="container" style="width: 60% margin: 0 auto"></div>
 
         <!-- silder bar -->
-        
+
         <div id="sliderCase1Area">
           <div class="row">
             <div class="col-1">&nbsp;</div>
@@ -231,10 +231,10 @@
     let case11Data = [
       [1,55],
 			[2,41],
-			[3,39], 
+			[3,39],
 			[4,43],
 			[5,39],
-			[6,40], 
+			[6,40],
 			[7,41],
 			[8,38],
 			[9,36]
@@ -288,15 +288,7 @@
 
       if (cases[0].title === btnText) {
 
-        chart.series[0].setData([]);
-        chart.yAxis[0].update({
-          max: 60,
-          min: 20
-        });
-        chart.xAxis[0].update({
-          max: 10,
-          min: 0
-        });
+
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(0).addClass('active');
         $('#caseTitle').text(cases[0].title);
@@ -305,38 +297,51 @@
         $('#sliderCase2Area').hide();
         $('#sliderCase3Area').hide();
         //设置hightcharts
-        data11=[];data12=[];data21=[];data31=[];data32=[];
-        if (chart.series.length===1) {
-          chart.series[0] = [];
-        }else{
-          chart.series[1].remove();
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
           chart.series[0].remove();
-          chart.addSeries({
-            data: [],
-            name: 'Frequency',
-            marker:{symbol:'circle',fillColor:'#'},
-          });
         }
 
+        chart.addSeries({
+          data: [],
+          name: 'Frequency',
+          showInLegend: false,
+          marker:{symbol:'circle',fillColor:'#'},
+        });
+
+
+        chart.yAxis[0].update({
+          max: 60,
+          min: 20
+        });
+        chart.xAxis[0].update({
+          max: 10,
+          min: 0
+        });
+
+        $("#sliderCase11").slider('refresh');
+
       }else if ( cases[1].title=== btnText) {
-        
-        data11=[];data12=[];data21=[];data31=[];data32=[];
-        chart.series[0].setData(data21);
-        chart.series[0].name = '0 deg';
-        if (chart.series.length === 1) {
-          chart.addSeries({
-            data: [],
-            name: '90 deg',
-            marker:{symbol:'circle',fillColor:'red'},
-          });
-        }else{
-          chart.series[1].remove();
-          chart.addSeries({
-            data: [],
-            name: '90 deg',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
+
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
+          chart.series[0].remove();
         }
+
+        chart.addSeries({
+          data: [],
+          name: '0 deg',
+          marker:{symbol:'circle',fillColor:'red'},
+        });
+
+        chart.addSeries({
+          data: [],
+          name: '90 deg',
+          marker:{symbol:'circle',fillColor:'#70C1B3'},
+        });
+
 
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(1).addClass('active');
@@ -356,25 +361,30 @@
           min: 0
         });
 
+        $("#sliderCase21").slider('refresh');
+        $("#sliderCase22").slider('refresh');
+
       }else if ( cases[2].title=== btnText) {
-        
-        data11=[];data12=[];data21=[];data31=[];data32=[];
-        chart.series[0].setData(data31);
-        chart.series[0].name = 'Mt=0,77';
-        if (chart.series.length === 1) {
-          chart.addSeries({
-            data: [],
-            name: 'Mt=0,83',
-            marker:{symbol:'circle',fillColor:'red'},
-          });
-        }else{
-          chart.series[1].remove();
-          chart.addSeries({
-            data: [],
-            name: 'Mt=0,83',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
+
+
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
+          chart.series[0].remove();
         }
+
+        chart.addSeries({
+          data: [],
+          name: 'Mt=0.77',
+          marker:{symbol:'circle',fillColor:'red'},
+        });
+
+        chart.addSeries({
+          data: [],
+          name: 'Mt=0.83',
+          marker:{symbol:'circle',fillColor:'#70C1B3'},
+        });
+
 
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(2).addClass('active');
@@ -394,7 +404,10 @@
           min: 0
         });
 
-      } 
+        $("#sliderCase31").slider('refresh');
+        $("#sliderCase32").slider('refresh');
+
+      }
 
 
     }
@@ -417,56 +430,84 @@
 
     $("#sliderCase11").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data11 = [];
-        chart.series[0].setData(data11);
-      } else {
-        data11.push(case11Data[slideEvt.value]);
-        chart.series[0].setData(data11);
+        data = [];
+        chart.series[0].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case11Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
     $("#sliderCase21").on("slide", function (slideEvt) {
       // console.log('sliderCase21', slideEvt.value)
       if (-1 === slideEvt.value) {
-        data21 = [];
-        chart.series[0].setData(data21);
-      } else {
-        data21.push(case21Data[slideEvt.value]);
-        chart.series[0].setData(data21);
-        // console.log('sliderCase1,data',data);
+        data = [];
+        chart.series[0].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case21Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
     $("#sliderCase22").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data22 = [];
-        chart.series[1].setData(data22);
-      } else {
-        data22.push(case22Data[slideEvt.value]);
-        chart.series[1].setData(data22);
+        data = [];
+        chart.series[1].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case22Data[i]);
+
+        chart.series[1].setData(data);
       }
     });
 
     $("#sliderCase31").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data31 = [];
-        chart.series[0].setData(data31);
-      } else {
-        data31.push(case31Data[slideEvt.value]);
-        chart.series[0].setData(data31);
+        data = [];
+        chart.series[0].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case31Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
 
     $("#sliderCase32").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data32 = [];
-        chart.series[1].setData(data32);
-      } else {
-        data32.push(case32Data[slideEvt.value]);
-        chart.series[1].setData(data32);
+        data = [];
+        chart.series[1].setData(data);
       }
-      console.log('data32',data32);
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case32Data[i]);
+
+        chart.series[1].setData(data);
+      }
     });
 
 
@@ -477,7 +518,7 @@
     Highcharts.setOptions({
       colors: ['#70C1B3', '#247BA0', '#F3FFBD', '#B2DBBF']
     });
-    var chart = Highcharts.chart('container', {  
+    var chart = Highcharts.chart('container', {
 	  credits: {
         enabled: false
       }, //去掉版权
@@ -504,7 +545,7 @@
       },
       yAxis: {
         title: {
-          text: 'SPL/dB'
+          text: 'SPL(dB)'
         },
         max: 60,
         min: 20
@@ -547,6 +588,7 @@
       series: [{
         name: 'Frequency',
         color: 'rgba(223, 83, 83, .5)',
+        showInLegend: false,
         data: []
       }
       ]

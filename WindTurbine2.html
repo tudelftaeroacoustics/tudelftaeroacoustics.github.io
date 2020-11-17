@@ -82,7 +82,7 @@
         </div>
 
         <blockquote class="blockquote text-left">
-          <p class="mb-0"><font size="3">In this simulation, let's have a look at the calculation of trailing edge noise of a wind turbine based on Amiet's model. The power spectrum density of the far field sound is expressed below, and all parameters are explained by clicking the nomenclature button besides the formula. The effects of the aspect ratio and angle of attack can be observed by different study cases at the above right location. 
+          <p class="mb-0"><font size="3">In this simulation, let's have a look at the calculation of trailing edge noise of a wind turbine based on Amiet's model. The power spectrum density of the far field sound is expressed below, and all parameters are explained by clicking the nomenclature button besides the formula. The effects of the aspect ratio and angle of attack can be observed by different study cases at the above right location.
           </p>
         </blockquote>
         <div class="row">
@@ -489,7 +489,8 @@
 
   <!--  case 按钮切换 -->
   <script>
-    function caseAction(caseBtn) {
+    function caseAction(caseBtn)
+     {
       console.log('case', $(caseBtn).text());
       let btnText = $(caseBtn).text().trim();
       if (cases[0].title === btnText) {
@@ -503,37 +504,21 @@
         $('#sliderCase3Area').hide();
         $('#sliderCase4Area').hide();
         //设置hightcharts
-        data = [];
-        data11 = [];
-        data21 = [];
-        data22 = [];
-        data23 = [];
-        data24 = [];
-        data31 = [];
-        data32 = [];
-        data33 = [];
-        data34 = [];
-        if (chart.series.length === 1) {
-          let s = chart.series[0];
-          chart.series[0] = [];
-          chart.series[0].push(s);
-        } else {
-          chart.series[1].remove();
-          chart.series[1].remove();
-          chart.series[1].remove();
+
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
           chart.series[0].remove();
-          chart.addSeries({
-            data: [],
-            name: 'Frequency',
-            marker: {
-              symbol: 'circle',
-              fillColor: 'red'
-            },
-          });
         }
 
+        chart.addSeries({
+          data: [],
+          name: 'Frequency',
+          showInLegend: false,
+          marker: {
+            symbol: 'circle',fillColor: 'red'},
+        });
 
-        chart.series[0].setData(data);
         chart.yAxis[0].update({
           max: 50,
           min: 15
@@ -543,56 +528,28 @@
           min: 300
         });
 
-
+        $("#sliderCase11").slider('refresh');
         // $('#sliderCase1').attr('data-slider-value',-1);
 
-      } else if (cases[1].title === btnText) {
+      } else if (cases[1].title === btnText)
 
-        console.log('case', "Case 2");
-        chart.series[0].name = 'AR 0.5';
-        data11 = [];
-        data21 = [];
-        data22 = [];
-        data23 = [];
-        data24 = [];
-        data31 = [];
-        data32 = [];
-        data33 = [];
-        data34 = [];
-        chart.series[0].setData(data21);
-        if (chart.series.length === 1) {
+        {
+
+          var chart_length = chart.series.length;
+          for(var i=0;i<chart_length;i++)
+          {
+            chart.series[0].remove();
+          }
+
           chart.addSeries({
             data: [],
-            name: 'AR 1',
+            name: 'AR 0.5',
             marker: {
               symbol: 'circle',
-              fillColor: '#70C1B3'
+              fillColor: 'red'
             },
           });
-          chart.addSeries({
-            data: [],
-            name: 'AR 3',
-            marker: {
-              symbol: 'circle',
-              fillColor: '#247BA0'
-            },
-          });
-          chart.addSeries({
-            data: [],
-            name: 'AR 5',
-            marker: {
-              symbol: 'circle',
-              fillColor: '#D1C667'
-            },
-          });
-          // colors: ['#70C1B3', '#247BA0', '#F3FFBD', '#B2DBBF']
 
-
-        } else {
-          chart.series[1].remove();
-          chart.series[1].remove();
-          chart.series[1].remove();
-          
           chart.addSeries({
             data: [],
             name: 'AR 1',
@@ -618,7 +575,7 @@
             },
           });
 
-        }
+
 
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(1).addClass('active');
@@ -638,24 +595,29 @@
           min: 0
         });
 
+          $("#sliderCase21").slider('refresh');
+          $("#sliderCase22").slider('refresh');
+          $("#sliderCase23").slider('refresh');
+          $("#sliderCase24").slider('refresh');
 
+      } else if (cases[2].title === btnText)
 
-      } else if (cases[2].title === btnText) {
-        console.log('case', "Case 3");
+       {
 
-        data11 = [];
-        data21 = [];
-        data22 = [];
-        data23 = [];
-        data24 = [];
-        data31 = [];
-        data32 = [];
-        data33 = [];
-        data34 = [];
-        chart.series[0].setData(data31);
-        chart.series[0].name = '𝜶= 0';
-        if (chart.series.length === 1) {
+          var chart_length = chart.series.length;
+          for(var i=0;i<chart_length;i++)
+          {
+            chart.series[0].remove();
+          }
 
+          chart.addSeries({
+            data: [],
+            name: '𝜶= 0',
+            marker: {
+              symbol: 'circle',
+              fillColor: 'red'
+            },
+          });
           chart.addSeries({
             data: [],
             name: '𝜶= 5.4',
@@ -680,37 +642,6 @@
               fillColor: '#D1C667'
             },
           });
-          chart.redraw();
-
-        } else {
-          chart.series[1].remove();
-          chart.series[1].remove();
-          chart.series[1].remove();
-          chart.addSeries({
-            data: [],
-            name: '𝜶= 5.4',
-            marker: {
-              symbol: 'circle',
-              fillColor: '#70C1B3'
-            },
-          });
-          chart.addSeries({
-            data: [],
-            name: '𝜶= 10.8',
-            marker: {
-              symbol: 'circle',
-              fillColor: '#247BA0'
-            },
-          });
-          chart.addSeries({
-            data: [],
-            name: '𝜶= 14.4',
-            marker: {
-              symbol: 'circle',
-              fillColor: '#D1C667'
-            },
-          });
-        }
 
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(2).addClass('active');
@@ -730,7 +661,9 @@
           min: 40
         });
 
-
+        $("#sliderCase31").slider('refresh');
+        $("#sliderCase32").slider('refresh');
+        $("#sliderCase33").slider('refresh');
 
       }
     }
@@ -764,93 +697,144 @@
       if (-1 === slideEvt.value) {
         data = [];
         chart.series[0].setData(data);
-      } else {
-        data.push(case11Data[slideEvt.value]);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case11Data[i]);
+
         chart.series[0].setData(data);
-        // console.log('sliderCase1,data',data);
       }
     });
 
     $("#sliderCase21").on("slide", function (slideEvt) {
-      console.log('sliderCase21', slideEvt.value)
       if (-1 === slideEvt.value) {
-        data21 = [];
-        chart.series[0].setData(data21);
-      } else {
-        data21.push(case21Data[slideEvt.value]);
-        chart.series[0].setData(data21);
-        // console.log('sliderCase1,data',data);
+        data = [];
+        chart.series[0].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case21Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
     $("#sliderCase22").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data22 = [];
-        chart.series[1].setData(data22);
-      } else {
-        data22.push(case22Data[slideEvt.value]);
-        chart.series[1].setData(data22);
+        data = [];
+        chart.series[1].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case22Data[i]);
+
+        chart.series[1].setData(data);
       }
     });
 
     $("#sliderCase23").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data23 = [];
-        chart.series[2].setData(data23);
-      } else {
-        data23.push(case23Data[slideEvt.value]);
-        chart.series[2].setData(data23);
+        data = [];
+        chart.series[2].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case23Data[i]);
+
+        chart.series[2].setData(data);
       }
     });
 
     $("#sliderCase24").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data24 = [];
-        chart.series[3].setData(data24);
-      } else {
-        data24.push(case24Data[slideEvt.value]);
-        chart.series[3].setData(data24);
+        data = [];
+        chart.series[3].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case24Data[i]);
+
+        chart.series[3].setData(data);
       }
     });
 
     $("#sliderCase31").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data31 = [];
-        chart.series[0].setData(data31);
-      } else {
-        data31.push(case31Data[slideEvt.value]);
-        chart.series[0].setData(data31);
+        data = [];
+        chart.series[0].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case31Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
 
     $("#sliderCase32").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data32 = [];
-        chart.series[1].setData(data32);
-      } else {
-        data32.push(case32Data[slideEvt.value]);
-        chart.series[1].setData(data32);
+        data = [];
+        chart.series[1].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case32Data[i]);
+
+        chart.series[1].setData(data);
       }
     });
 
     $("#sliderCase33").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data33 = [];
-        chart.series[2].setData(data33);
-      } else {
-        data33.push(case33Data[slideEvt.value]);
-        chart.series[2].setData(data33);
+        data = [];
+        chart.series[2].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case33Data[i]);
+
+        chart.series[2].setData(data);
       }
     });
 
     $("#sliderCase34").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data34 = [];
-        chart.series[3].setData(data34);
-      } else {
-        data34.push(case34Data[slideEvt.value]);
-        chart.series[3].setData(data34);
+        data = [];
+        chart.series[3].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case34Data[i]);
+
+        chart.series[3].setData(data);
       }
     });
   </script>
@@ -860,7 +844,7 @@
     Highcharts.setOptions({
 	  colors: ['#70C1B3', '#247BA0', '#F3FFBD', '#D1C667']
     });
-    var chart = Highcharts.chart('container', {	  
+    var chart = Highcharts.chart('container', {
 	  credits: {
         enabled: false
       }, //去掉版权
@@ -877,7 +861,7 @@
       xAxis: {
         title: {
           enabled: true,
-          text: 'Frequency'
+          text: 'Frequency (Hz)'
         },
         startOnTick: true,
         endOnTick: true,
@@ -887,7 +871,7 @@
       },
       yAxis: {
         title: {
-          text: 'SPL/dB'
+          text: 'SPL (dB)'
         },
         max: 50,
         min: 15
@@ -923,12 +907,13 @@
           },
           tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: 'SPL/dB	:{point.x}, value:{point.y}'
+            pointFormat: 'SPL (dB)	:{point.y}, Frequency (Hz):{point.x}'
           }
         }
       },
       series: [{
         name: 'Frequency:',
+        showInLegend: false,
         color: 'rgba(223, 83, 83, .5)',
         data: []
       }]

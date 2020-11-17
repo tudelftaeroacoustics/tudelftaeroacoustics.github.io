@@ -40,7 +40,7 @@
               </a>
             </li>
 
-            
+
 
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine1.html"  target="_self">
@@ -85,7 +85,7 @@
         </div>
 
         <blockquote class="blockquote text-left">
-          <p class="mb-0"><font size="3">In the present simulation, an empirical model for aeroacoustic resonance in a cavity is expressed based upon Rossiter’s formula, and all parameters are explained by clicking the nomenclature button besides the formula. At the above right location, you can choose different cases to have a look at the effects of Mach number and cavity shape. 
+          <p class="mb-0"><font size="3">In the present simulation, an empirical model for aeroacoustic resonance in a cavity is expressed based upon Rossiter’s formula, and all parameters are explained by clicking the nomenclature button besides the formula. At the above right location, you can choose different cases to have a look at the effects of Mach number and cavity shape.
           </p>
         </blockquote>
         <div class="row">
@@ -114,7 +114,7 @@
         <div id="container" style="width: 60% margin: 0 auto"></div>
 
         <!-- silder bar -->
-        
+
 
         <div id="sliderCase1Area">
           <div class="row">
@@ -147,7 +147,7 @@
         </div>
         <div id="sliderCase2Area"  style="display:none">
           <div class="row">
-            <div class="col-1">Frequency</div>
+            <div class="col-1"> </div>
             <div class="col-11">
               <input id="sliderCase21" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
                 data-slider-max="9" data-slider-step="1" data-slider-value="-1" />
@@ -155,7 +155,7 @@
           </div>
         </div>
 
-        
+
 
 
 
@@ -284,36 +284,30 @@
       console.log('case', $(caseBtn).text());
       let btnText = $(caseBtn).text().trim();
       if ( cases[0].title=== btnText) {
-        
-        data11=[];data12=[];data13=[];data21=[];
-        chart.series[0].setData(data11);
-        chart.series[0].name = 'Mode1';
-        if (chart.series.length === 1) {
-          chart.addSeries({
-            data: [],
-            name: 'Mode2',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
-          chart.addSeries({
-            data: [],
-            name: 'Mode3',
-            marker:{symbol:'circle',fillColor:'#247BA0'}
-          });
 
-        }else{
-          chart.series[1].remove();
-          chart.series[1].remove();
-          chart.addSeries({
-            data: [],
-            name: 'Mode2',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
-          chart.addSeries({
-            data: [],
-            name: 'Mode3',
-            marker:{symbol:'circle',fillColor:'#247BA0'}
-          });
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
+          chart.series[0].remove();
         }
+
+        chart.addSeries({
+          data: [],
+          name: 'Mode1',
+          marker:{symbol:'circle',fillColor:'red'},
+        });
+
+        chart.addSeries({
+          data: [],
+          name: 'Mode2',
+          marker:{symbol:'circle',fillColor:'#70C1B3'},
+        });
+        chart.addSeries({
+          data: [],
+          name: 'Mode3',
+          marker:{symbol:'circle',fillColor:'#247BA0'}
+        });
+
 
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(0).addClass('active');
@@ -331,6 +325,10 @@
           max: 1.5,
           min: -0.1
         });
+
+        $("#sliderCase11").slider('refresh');
+        $("#sliderCase12").slider('refresh');
+        $("#sliderCase13").slider('refresh');
 
       }else if (cases[1].title === btnText) {
 
@@ -350,29 +348,24 @@
         $('#sliderCase1Area').hide();
         $('#sliderCase2Area').show();
         //设置hightcharts
-        data11=[];data12=[];data13=[];data21=[];
-        if (chart.series.length===1) {
-          //let s = chart.series[0];
-          chart.series[1] = [];
-          //chart.series[0].push(s);
-        }else{
-          console.log('length else',111111);
-          chart.series[1].remove();
-          chart.series[1].remove();
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
           chart.series[0].remove();
-          chart.addSeries({
-            data: [],
-            name: 'L/D',
-            marker:{symbol:'circle',fillColor:'red'},
-          });
         }
 
+        chart.addSeries({
+          data: [],
+          name: 'L/D',
+          showInLegend: false,
+          marker:{symbol:'circle',fillColor:'red'},
+        });
 
-        
-      
+
+        $("#sliderCase21").slider('refresh');
         // $('#sliderCase1').attr('data-slider-value',-1);
 
-      } 
+      }
 
 
     }
@@ -393,45 +386,67 @@
 
     $("#sliderCase11").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data11 = [];
-        chart.series[0].setData(data11);
-      } else {
-        data11.push(case11Data[slideEvt.value]);
-        chart.series[0].setData(data11);
-        console.log('sliderCase11,data',data11);
+        data = [];
+        chart.series[0].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case11Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
     $("#sliderCase12").on("slide", function (slideEvt) {
       // console.log('sliderCase21', slideEvt.value)
       if (-1 === slideEvt.value) {
-        data12 = [];
-        chart.series[1].setData(data12);
-      } else {
-        data12.push(case12Data[slideEvt.value]);
-        chart.series[1].setData(data12);
-        // console.log('sliderCase1,data',data);
+        data = [];
+        chart.series[1].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case12Data[i]);
+
+        chart.series[1].setData(data);
       }
     });
 
     $("#sliderCase13").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data13 = [];
-        chart.series[2].setData(data13);
-      } else {
-        data13.push(case13Data[slideEvt.value]);
-        chart.series[2].setData(data13);
+        data = [];
+        chart.series[2].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case13Data[i]);
+
+        chart.series[2].setData(data);
       }
     });
 
     $("#sliderCase21").on("slide", function (slideEvt) {
     	// console.log('sliderCase21')
       if (-1 === slideEvt.value) {
-        data21 = [];
-        chart.series[0].setData(data21);
-      } else {
-        data21.push(case21Data[slideEvt.value]);
-        chart.series[0].setData(data21);
+        data = [];
+        chart.series[0].setData(data);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case21Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 

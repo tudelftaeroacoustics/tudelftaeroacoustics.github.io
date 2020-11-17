@@ -106,9 +106,7 @@
         <div class="row" style="margin-bottom:30px;">
           <div class="col-12">
             <h6 id="caseDesc">The jet is operating at Mj = 0.911 with D = 0.0508m, and the observer location is at 90
-              deg to the jet
-              axis at a distance of 72D.
-            Frequency is reported in non-dimensional Strohal number </h6>
+              deg to the jet axis at a distance of 72D. Frequency is reported in non-dimensional Strouhal number (St)</h6>
           </div>
         </div>
 
@@ -237,15 +235,15 @@
   <script>
     let cases = [{
         title: 'Case 1: Frequency 𝝎',
-        desc: 'The jet is operating at Mj = 0.911 with D = 0.0508m, and the observer location is at 90 deg to the jetaxis at a distance of 72D. Frequency is reported in non-dimensional Strouhal number St.'
+        desc: 'The jet is operating at Mj = 0.911 with D = 0.0508m, and the observer location is at 90 deg to the jetaxis at a distance of 72D. Frequency is reported in non-dimensional Strouhal number (St).'
       },
       {
         title: 'Case 2: Reference Location',
-        desc: 'The jet is operating at Mj = 1 with D = 0.0508m, and the observer locations are from a distance of 100D, at 50 deg, 90 deg, and 130 deg, respectively. Frequency is reported in non-dimensional Strouhal number St.'
+        desc: 'The jet is operating at Mj = 1 with D = 0.0508m, and the observer locations are from a distance of 100D, at 50 deg, 90 deg, and 130 deg, respectively. Frequency is reported in non-dimensional Strouhal number (St).'
       },
       {
         title: 'Case 3: Mach Number',
-        desc: 'The jet is operating at Mj = 0,5, Mj = 0,7, and Mj = 1,47, respectively, with D = 0.0508m. And the observer location is from a distance of 100D, at 90 deg. Frequency is reported in non-dimensional Strouhal number St.'
+        desc: 'The jet is operating at Mj = 0,5, Mj = 0,7, and Mj = 1,47, respectively, with D = 0.0508m. And the observer location is from a distance of 100D, at 90 deg. Frequency is reported in non-dimensional Strouhal number (St).'
       }
     ]
     let case1Data = [
@@ -423,30 +421,28 @@
         $('.btn-outline-secondary').eq(0).addClass('active');
         $('#caseTitle').text(cases[0].title);
         $('#caseDesc').text(cases[0].desc);
-        $('#sliderCase1Area').show();
         $('#sliderCase2Area').hide();
         $('#sliderCase3Area').hide();
-        //设置hightcharts
-        data = [];
-        data21=[];data22=[];data23=[];data31=[];data32=[];data33=[];
-        if (chart.series.length===1) {
-          let s = chart.series[0];
-          chart.series[0] = [];
-          chart.series[0].push(s);
-        }else{
-          console.log('length else',111111);
-          chart.series[1].remove();
-          chart.series[1].remove();
+        $('#sliderCase1Area').show();
+
+
+        console.log("Case1",chart.series.length)
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
           chart.series[0].remove();
-          chart.addSeries({
-            data: [],
-            name: 'Frequency',
-            marker:{symbol:'circle',fillColor:'red'},
-          });
         }
+        console.log("Case1",chart.series.length)
+
+        chart.addSeries({
+          data: [],
+          name: 'Frequency',
+          showInLegend: false,
+          marker:{symbol:'circle',fillColor:'red'},
+        });
+        console.log("Case1",chart.series.length)
 
 
-        chart.series[0].setData(data);
         chart.yAxis[0].update({
           max: 70,
           min: 20
@@ -456,51 +452,46 @@
           min: -2
         });
 
-
-        // $('#sliderCase1').attr('data-slider-value',-1);
+        $("#sliderCase1").slider('refresh');
+        
 
       } else if ('Case 2: Reference Location' === btnText) {
 
-        console.log('case', "Case 2");
-        chart.series[0].name = '50 deg';
-        data21=[];data22=[];data23=[];data31=[];data32=[];data33=[];
-        chart.series[0].setData(data21);
-        if (chart.series.length === 1) {
-          chart.addSeries({
-            data: [],
-            name: '90 deg',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
-          chart.addSeries({
-            data: [],
-            name: '130 deg',
-            marker:{symbol:'circle',fillColor:'#247BA0'}
-          });
-
-        }else{
-          chart.series[1].remove();
-          chart.series[1].remove();
-          chart.addSeries({
-            data: [],
-            name: '90 deg',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
-          chart.addSeries({
-            data: [],
-            name: '130 deg',
-            marker:{symbol:'circle',fillColor:'#247BA0'}
-          });
+        console.log("Case2",chart.series.length)
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
+          chart.series[0].remove();
         }
+        console.log("Case2",chart.series.length)
 
+        chart.addSeries({
+          data: [],
+          name: '50 deg',
+          marker:{symbol:'circle',fillColor:'red'},
+        });
+        chart.addSeries({
+          data: [],
+          name: '90 deg',
+          marker:{symbol:'circle',fillColor:'#70C1B3'},
+        });
+        chart.addSeries({
+          data: [],
+          name: '130 deg',
+          marker:{symbol:'circle',fillColor:'#247BA0'}
+        });
+
+
+        console.log("Case2",chart.series.length)
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(1).addClass('active');
         $('#caseTitle').text(cases[1].title);
         $('#caseDesc').text(cases[1].desc);
         $('#sliderCase1Area').hide();
-        $('#sliderCase2Area').show();
         $('#sliderCase3Area').hide();
-        $('#sliderCase21').attr('data-slider-value','-1');
-        // $('#sliderCase21').silder({value:0});
+        $('#sliderCase2Area').show();
+
+
 
         chart.yAxis[0].update({
           max: 130,
@@ -511,41 +502,34 @@
           min: -2
         });
 
-
+        $("#sliderCase21").slider('refresh');
+        $("#sliderCase22").slider('refresh');
+        $("#sliderCase23").slider('refresh');
 
       } else if ('Case 3: Mach Number' === btnText) {
 
-        console.log('case', "Case 3");
-        chart.series[0].name = 'Mj = 0,5';
-        data21=[];data22=[];data23=[];data31=[];data32=[];data33=[];
-        chart.series[0].setData(data31);
-        if (chart.series.length === 1) {
-          chart.addSeries({
-            data: [],
-            name: 'Mj = 0,7',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
-          chart.addSeries({
-            data: [],
-            name: 'Mj = 1,47',
-            marker:{symbol:'circle',fillColor:'#247BA0'}
-          });
-
-        }else{
-
-          chart.series[1].remove();
-          chart.series[1].remove();
-          chart.addSeries({
-            data: [],
-            name: 'Mj = 0,7',
-            marker:{symbol:'circle',fillColor:'#70C1B3'},
-          });
-          chart.addSeries({
-            data: [],
-            name: 'Mj = 1,47',
-            marker:{symbol:'circle',fillColor:'#247BA0'}
-          });
+        var chart_length = chart.series.length;
+        for(var i=0;i<chart_length;i++)
+        {
+          chart.series[0].remove();
         }
+
+        chart.addSeries({
+          data: [],
+          name: 'Mj = 0,5',
+          marker:{symbol:'circle',fillColor:'red'},
+        });
+
+          chart.addSeries({
+            data: [],
+            name: 'Mj = 0,7',
+            marker:{symbol:'circle',fillColor:'#70C1B3'},
+          });
+          chart.addSeries({
+            data: [],
+            name: 'Mj = 1,47',
+            marker:{symbol:'circle',fillColor:'#247BA0'}
+          });
 
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(2).addClass('active');
@@ -565,7 +549,9 @@
           min: -2
         });
 
-
+        $("#sliderCase31").slider('refresh');
+        $("#sliderCase32").slider('refresh');
+        $("#sliderCase33").slider('refresh');
 
       }
     }
@@ -575,13 +561,7 @@
 
   <!-- 滚动条事件 -->
   <script>
-    let data = [],
-      data21 = [],
-      data22 = [],
-      data23 = [],
-      data31 = [],
-      data32 = [],
-      data33 = [];
+    let data = [];
     $("#sliderCase1").slider();
     $("#sliderCase21").slider();
     $("#sliderCase22").slider();
@@ -594,10 +574,15 @@
       if (-1 === slideEvt.value) {
         data = [];
         chart.series[0].setData(data);
-      } else {
-        data.push(case1Data[slideEvt.value]);
+      }
+
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case1Data[i]);
+
         chart.series[0].setData(data);
-        // console.log('sliderCase1,data',data);
       }
     });
 
@@ -606,10 +591,14 @@
       if (-1 === slideEvt.value) {
         data21 = [];
         chart.series[0].setData(data21);
-      } else {
-        data21.push(case21Data[slideEvt.value]);
-        chart.series[0].setData(data21);
-        // console.log('sliderCase1,data',data);
+      }
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case21Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
@@ -617,9 +606,14 @@
       if (-1 === slideEvt.value) {
         data22 = [];
         chart.series[1].setData(data22);
-      } else {
-        data22.push(case22Data[slideEvt.value]);
-        chart.series[1].setData(data22);
+      }
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case22Data[i]);
+
+        chart.series[1].setData(data);
       }
     });
 
@@ -627,9 +621,14 @@
       if (-1 === slideEvt.value) {
         data23 = [];
         chart.series[2].setData(data23);
-      } else {
-        data23.push(case23Data[slideEvt.value]);
-        chart.series[2].setData(data23);
+      }
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case23Data[i]);
+
+        chart.series[2].setData(data);
       }
     });
 
@@ -638,9 +637,14 @@
       if (-1 === slideEvt.value) {
         data31 = [];
         chart.series[0].setData(data31);
-      } else {
-        data31.push(case31Data[slideEvt.value]);
-        chart.series[0].setData(data31);
+      }
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case31Data[i]);
+
+        chart.series[0].setData(data);
       }
     });
 
@@ -648,9 +652,14 @@
       if (-1 === slideEvt.value) {
         data32 = [];
         chart.series[1].setData(data32);
-      } else {
-        data32.push(case32Data[slideEvt.value]);
-        chart.series[1].setData(data32);
+      }
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case32Data[i]);
+
+        chart.series[1].setData(data);
       }
     });
 
@@ -658,9 +667,14 @@
       if (-1 === slideEvt.value) {
         data33 = [];
         chart.series[2].setData(data33);
-      } else {
-        data33.push(case33Data[slideEvt.value]);
-        chart.series[2].setData(data33);
+      }
+      else
+      {
+        data=[];
+        for(var i=0;i<=slideEvt.value;i++)
+        data.push(case33Data[i]);
+
+        chart.series[2].setData(data);
       }
     });
   </script>
@@ -678,7 +692,7 @@
 
 		tooltip: {
 			formatter: function () {
-			return 'St:'+ Math.pow(10,this.x).toFixed(2) + ', SPL/dB:'+this.y;
+			return 'St:'+ Math.pow(10,this.x).toFixed(2) + ', SPL(dB):'+this.y;
 			}
 		},
 
@@ -709,7 +723,7 @@
       },
       yAxis: {
         title: {
-          text: 'SPL/dB'
+          text: 'SPL (dB)'
         },
         max: 70,
         min: 20
@@ -753,6 +767,7 @@
       },
       series: [{
         name: 'Frequency',
+        showInLegend: false,
         color: 'rgba(223, 83, 83, .5)',
         data: []
       }]

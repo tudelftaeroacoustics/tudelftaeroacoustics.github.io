@@ -307,7 +307,8 @@
           data: [],
           name: 'Frequency',
           showInLegend: false,
-          marker:{symbol:'circle',fillColor:'#'},
+          color: 'rgba(223, 83, 83, .5)',
+          marker:{symbol:'circle',fillColor:'red'},
         });
 
 
@@ -333,13 +334,13 @@
         chart.addSeries({
           data: [],
           name: '0 deg',
-          marker:{symbol:'circle',fillColor:'red'},
+          color: 'rgba(223, 83, 83, .5)',
         });
 
         chart.addSeries({
           data: [],
           name: '90 deg',
-          marker:{symbol:'circle',fillColor:'#70C1B3'},
+          color: '#70C1B3',
         });
 
 
@@ -376,13 +377,13 @@
         chart.addSeries({
           data: [],
           name: 'Mt=0.77',
-          marker:{symbol:'circle',fillColor:'red'},
+          color: 'rgba(223, 83, 83, .5)',
         });
 
         chart.addSeries({
           data: [],
           name: 'Mt=0.83',
-          marker:{symbol:'circle',fillColor:'#70C1B3'},
+          color: '#70C1B3',
         });
 
 
@@ -560,31 +561,10 @@
         // backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
         borderWidth: 1
       },
-      plotOptions: {
-        scatter: {
-          marker: {
-            radius: 5,
-            fillColor:'#FF1654',
-            states: {
-              hover: {
-                enabled: true,
-                lineColor: 'rgb(100,100,100)'
-              }
-            }
-          },
-          states: {
-            hover: {
-              marker: {
-                enabled: false
-              }
-            }
-          },
-          tooltip: {
-            headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: 'BPF:{point.x}, SPL(dB):{point.y}'
-          }
-        }
-      },
+      tooltip: {
+        headerFormat: 'BPF harmonic: {point.x}<br/>',
+        pointFormat: 'SPL (dB): {point.y}<br/>'
+    },
       series: [{
         name: 'Frequency',
         color: 'rgba(223, 83, 83, .5)',

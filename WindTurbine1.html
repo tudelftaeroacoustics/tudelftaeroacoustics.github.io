@@ -8,7 +8,7 @@
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
 
-  <title>MOOC</title>
+  <title>ProfEd NRMS</title>
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
   <link href="css/bootstrap-slider.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
             <li class="nav-item">
               <a class="nav-link active"  href="WindTurbine1.html"  target="_self">
                 <span data-feather="file"></span>
-                Wind Turbine Noise - Pressure fluctuations at the TE-edge
+                Wind Turbine Noise - Surface pressure fluctuations
               </a>
             </li>
             <li class="nav-item">
@@ -67,44 +67,49 @@
           <h1 class="h2">Wind Turbine Noise - Pressure fluctuations at the TE-edge</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
-              <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Frequency 𝝎</button>
-              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Reference Location, xTE</button>
-              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 3: Airfoil</button>
-              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 4: Incoming wind velocity</button>
+              <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Spectral density in frequency </button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Chordwise distance from TE</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 3: Airfoil type</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 4: Relative incoming flow speed</button>
             </div>
           </div>
         </div>
 
-        <blockquote class="blockquote text-left">
-          <p class="mb-0"><font size="3">For the noise computation of a wind turbine based on Amiet's trailing edge noise model, the spectrum of fluctuating wall pressure is one of the most important input parameters, which is investigated in this simulation. By clicking the nomenclature button besides the formula, you can find the explanations of all the parameters. And at the above right location you can choose different cases to see how these parameters play a role in the pressure fluctuations.
+        <!-- Text in the menu  -->
+        <blockquote class="blockquote text-justify">
+          <p><font size="3">The trailing-edge noise-computation for a wind turbine starts from estimation of the surface pressure-fluctuations at the blade trailing edge. The latter can be 
+             used as input in Amiet's trailing-edge noise-model for example. As a first approximation we can consider the blade constituted by several airfoils (i.e. blade sections), 
+             each one rotating at a specific speed, and therefore with a specific incoming velocity. In this example here below, we focus on a single airfoil, and we determine the spectral
+             distribution of the surface pressure-fluctuations, in function of their frequency content. By clicking the nomenclature button besides the formula, you can find the explanations
+             of all input parameters. Top-right of this page, you can choose different cases to play with. All the graphs are obtained according to the formulas from: 
+          </p>
+          <p><font size="3"; style="color:blue"> Rozenberg Y, Robert G, Moreau S (2012) Wall-pressure spectral model including the adverse pressure gradient effects, AIAA Journal 50(10). 
           </p>
         </blockquote>
+
+        <!-- Formula image  -->
         <div class="row">
-          <!-- 公式图片 -->
           <div class="col"><img style="width:660px;height:110px" src="img/wind_turbine_1/formula1.png" alt=""></div>
-          <!-- 弹框图片 -->
-          <div class="col">
+         <div class="col">
             <img style="width:180px;height:70px" src="img/click.png" alt="" data-toggle="modal" data-target="#exampleModal">
           </div>
         </div>
 
+        <!-- Title and conditions  -->
         <div class="row" style="margin-top:30px;">
-          <!-- <div class=""><img src="img/jet/jet-case1.png" alt=""></div> -->
           <div class="col">
-            <h4 id="caseTitle" class="text-primary">Case 1: Frequency 𝝎</h4>
+            <h4 id="caseTitle" class="text-primary">Case 1: Spectral density in frequency</h4>
           </div>
-
         </div>
-        <!-- <div style="width:100%;height:1500px; background-color:goldenrod;"></div> -->
         <div class="row" style="margin-bottom:30px;">
           <div class="col-12">
-            <h6 id="caseDesc">NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s.</h6>
+            <h6 id="caseDesc"> NACA0012 airfoil: Angle of attack	&#945=0&#176, Chord c=1m, Wind-speed V<sub>&#8734</sub>=70m/s.</h6>
           </div>
         </div>
 
-        <div id="container" style="width: 60% margin: 0 auto"></div>
+        <div id="container" style="width:60%; margin:0 auto"></div>
 
-        <!-- silder bar -->
+        <!--Slider Frequency  -->
         <div id="sliderCase1Area">
           <div class="row">
             <div class="col-1">Frequency</div>
@@ -115,18 +120,18 @@
           </div>
         </div>
 
+        <!--Slider TE locations  -->
         <div id="sliderCase2Area" style="display:none">
           <div class="row">
-            <div class="col-1">xTE=18mm
+            <div class="col-1">x<sub>TE</sub>=2%c
             </div>
             <div class="col-11">
               <input id="sliderCase21" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
                 data-slider-max="19" data-slider-step="1" data-slider-value="-1" />
             </div>
           </div>
-
           <div class="row">
-            <div class="col-1">xTE=77mm
+            <div class="col-1"> x<sub>TE</sub>=8%c
             </div>
             <div class="col-11">
               <input id="sliderCase22" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -136,6 +141,7 @@
 
         </div>
 
+        <!--Slider Airfoils  -->
         <div id="sliderCase3Area" style="display:none">
           <div class="row">
             <div class="col-1">NACA0012
@@ -143,9 +149,8 @@
             <div class="col-11">
               <input id="sliderCase31" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
                 data-slider-max="19" data-slider-step="1" data-slider-value="-1" />
-            </div>
-          </div>
-
+                </div>
+           </div>
           <div class="row">
             <div class="col-1">NACA5510
             </div>
@@ -154,21 +159,21 @@
                 data-slider-max="20" data-slider-step="1" data-slider-value="-1" />
             </div>
           </div>
-
         </div>
 
+        <!--Slider Speeds  -->
         <div id="sliderCase4Area" style="display:none">
           <div class="row">
-            <div class="col-1">Frequency 30 m/s
+            <div class="col-1">V<sub>&#8734</sub>=30m/s
             </div>
             <div class="col-11">
               <input id="sliderCase41" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
                 data-slider-max="18" data-slider-step="1" data-slider-value="-1" />
             </div>
-          </div>
 
+          </div>
           <div class="row">
-            <div class="col-1">Frequency 50 m/s
+            <div class="col-1">V<sub>&#8734</sub>=50m/s
             </div>
             <div class="col-11">
               <input id="sliderCase42" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -177,10 +182,6 @@
           </div>
 
         </div>
-
-
-
-
     </div>
 
     </main>
@@ -192,10 +193,9 @@
   <div class="modal fade" style="top:100px;left:-200px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <img style="width:522px;height:756px" src="img/wind_turbine_1/explain.png" alt="">
+      <img style="width:800px;height:600px" src="img/wind_turbine_1/explain.png" alt="">
     </div>
   </div>
-
 
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -204,7 +204,6 @@
   <script src="js/bootstrap-slider.js"></script>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
-
 
 
   <!-- icons -->
@@ -225,180 +224,45 @@
   </script>
 
 
-
   <!-- 初始化数据 -->
   <script>
     let cases = [{
-        title: 'Case 1: Frequency 𝝎',
-        desc: 'NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s.'
+        title: 'Case 1: Spectral density in frequency',
       },
       {
-        title: 'Case 2: Reference Location, xTE',
-        desc: 'NACA0012 airfoil, with angle of attack of 0, at wind speed 69.5 m/s, for two chordwise positions upstream of the trailing edge (TE).'
+        title: 'Case 2: Chordwise distance from TE',
       },
       {
-        title: 'Case 3: Airfoil',
-        desc: 'NACA0012 and NACA5510 airfoil, with angle of attack of 0, at wind speed 70 m/s.'
+        title: 'Case 3: Airfoil type',
       },
       {
-        title: 'Case 4: Incoming wind velocity',
-        desc: 'NACA0015 airfoil, with angle of attack of 0, at wind speed 30 m/s, and 50 m/s.'
-      }
+        title: 'Case 4: Relative incoming flow speed',
+       }
     ]
-    let case11Data = [
-		[300.91, 79.95],
-		[350.79, 80.63],
-		[401.49, 81.13],
-		[502.28, 81.89],
-		[600.14, 82.34],
-		[701.84, 82.66],
-		[795.99, 82.84],
-		[900.03, 82.88],
-		[996.03, 82.92],
-		[1238.78, 82.80],
-		[1521.98, 82.50],
-		[1994.76, 81.76],
-		[2451.13, 80.97],
-		[2993.65, 80.00],
-		[3491.61, 79.04],
-		[3985.68, 78.15],
-		[4974.86, 76.38],
-		[5893.23, 74.83],
-		[7379.39, 72.64],
-		[9471.79, 69.90]
-    ];
-    let case21Data = [
-		[300.91, 79.95],
-		[350.79, 80.63],
-		[401.49, 81.13],
-		[502.28, 81.89],
-		[600.14, 82.34],
-		[701.84, 82.66],
-		[795.99, 82.84],
-		[900.03, 82.88],
-		[996.03, 82.92],
-		[1238.78, 82.80],
-		[1521.98, 82.50],
-		[1994.76, 81.76],
-		[2451.13, 80.99],
-		[2993.65, 80.00],
-		[3491.61, 79.04],
-		[3985.68, 78.15],
-		[4974.86, 76.38],
-		[5893.23, 74.83],
-		[7379.39, 72.64],
-		[9471.79, 69.90]
-    ];
-    let case22Data = [
-		[300.05, 79.35],
-		[350.42, 79.92],
-		[399.16, 80.51],
-		[496.18, 81.22],
-		[598.28, 81.75],
-		[696.81, 82.20],
-		[798.21, 82.48],
-		[899.28, 82.72],
-		[999.23, 82.80],
-		[1293.25, 83.09],
-		[1614.59, 83.13],
-		[1999.11, 83.09],
-		[2461.65, 82.87],
-		[2989.49, 82.58],
-		[3463.22, 82.36],
-		[3989.93, 82.03],
-		[4982.17, 81.46],
-		[6067.78, 80.89],
-		[7514.18, 80.22],
-		[9947.14, 79.15]
-    ];
+    let case11Data = [	[300.91, 79.95],		[350.79, 80.63],		[401.49, 81.13],		[502.28, 81.89],		[600.14, 82.34],		[701.84, 82.66],		[795.99, 82.84],		
+    [900.03, 82.88],		[996.03, 82.92],		[1238.78, 82.80],		[1521.98, 82.50],		[1994.76, 81.76],		[2451.13, 80.97],		[2993.65, 80.00],		[3491.61, 79.04],		
+    [3985.68, 78.15],	  [4974.86, 76.38],		[5893.23, 74.83],		[7379.39, 72.64],		[9471.79, 69.90]    ];
 
+    let case21Data = [	[300.91, 79.95],		[350.79, 80.63],		[401.49, 81.13],		[502.28, 81.89],		[600.14, 82.34],		[701.84, 82.66],		[795.99, 82.84],		
+    [900.03, 82.88],		[996.03, 82.92],		[1238.78, 82.80],		[1521.98, 82.50],		[1994.76, 81.76],		[2451.13, 80.99],		[2993.65, 80.00],		[3491.61, 79.04],		
+    [3985.68, 78.15],		[4974.86, 76.38],		[5893.23, 74.83],		[7379.39, 72.64],		[9471.79, 69.90]    ];
+
+    let case22Data = [	[300.05, 79.35],		[350.42, 79.92],		[399.16, 80.51],		[496.18, 81.22],		[598.28, 81.75],		[696.81, 82.20],		[798.21, 82.48],
+		[899.28, 82.72],		[999.23, 82.80],		[1293.25, 83.09],		[1614.59, 83.13],		[1999.11, 83.09],		[2461.65, 82.87],		[2989.49, 82.58],		[3463.22, 82.36],
+		[3989.93, 82.03],		[4982.17, 81.46],		[6067.78, 80.89],		[7514.18, 80.22],		[9947.14, 79.15]    ];
     let case31Data = [
-		[300.91, 79.95],
-		[350.79, 80.63],
-		[401.49, 81.13],
-		[502.28, 81.89],
-		[600.14, 82.34],
-		[701.84, 82.66],
-		[795.99, 82.84],
-		[900.03, 82.88],
-		[996.03, 82.92],
-		[1238.78, 82.80],
-		[1521.98, 82.50],
-		[1994.76, 81.76],
-		[2451.13, 80.99],
-		[2993.65, 80.00],
-		[3491.61, 79.04],
-		[3985.68, 78.15],
-		[4974.86, 76.38],
-		[5893.23, 74.83],
-		[7379.39, 72.64],
-		[9471.79, 69.90]
-    ];
-    let case32Data = [
-		[300.27, 86.24],
-		[348.78, 87.01],
-		[423.44, 87.84],
-		[488.24, 88.44],
-		[569.92, 89.00],
-		[662.00, 89.42],
-		[772.75, 89.77],
-		[910.92, 90.01],
-		[1000.00, 90.10],
-		[1164.43, 90.09],
-		[1376.01, 89.88],
-		[1634.04, 89.52],
-		[1935.70, 88.95],
-		[2231.95, 88.20],
-		[2683.24, 87.06],
-		[3147.53, 85.66],
-		[3629.24, 84.16],
-		[4267.69, 82.22],
-		[5018.45, 79.92],
-		[5944.91, 76.99],
-		[7007.91, 73.73]
-    ]
-    let case41Data = [
-		[2.00, 38.06],
-		[2.18, 42.28],
-		[2.30, 44.35],
-		[2.48, 46.44],
-		[2.60, 47.42],
-		[2.70, 47.96],
-		[2.78, 47.96],
-		[2.85, 47.78],
-		[2.90, 47.42],
-		[2.95, 47.04],
-		[3.00, 46.65],
-		[3.30, 42.28],
-		[3.48, 38.06],
-		[3.60, 34.81],
-		[3.70, 32.04],
-		[3.78, 29.54],
-		[3.85, 26.02],
-		[3.90, 23.52],
-		[21.2, 43.95]
-    ];
-    let case42Data = [
-	    [2.00, 61.40],
-		[2.18, 65.69],
-		[2.30, 68.56],
-		[2.48, 71.72],
-		[2.60, 73.22],
-		[2.70, 73.87],
-		[2.78, 74.12],
-		[2.85, 74.03],
-		[2.90, 73.78],
-		[2.95, 73.52],
-		[3.00, 72.98],
-		[3.30, 66.53],
-		[3.48, 60.26],
-		[3.60, 53.98],
-		[3.70, 48.46],
-		[3.78, 43.81],
-		[3.85, 39.08],
-		[3.90, 34.81],
-		[3.95, 30.88]
-    ]
+		[300.91, 79.95],		[350.79, 80.63],		[401.49, 81.13],		[502.28, 81.89],		[600.14, 82.34],		[701.84, 82.66],		[795.99, 82.84],		[900.03, 82.88],
+		[996.03, 82.92],		[1238.78, 82.80],		[1521.98, 82.50],		[1994.76, 81.76],		[2451.13, 80.99],		[2993.65, 80.00],		[3491.61, 79.04],		[3985.68, 78.15],
+		[4974.86, 76.38],		[5893.23, 74.83],		[7379.39, 72.64],		[9471.79, 69.90]    ];
+    let case32Data = [	[300.27, 86.24],		[348.78, 87.01],		[423.44, 87.84],		[488.24, 88.44],		[569.92, 89.00],		[662.00, 89.42],		[772.75, 89.77],
+		[910.92, 90.01],		[1000.00, 90.10],		[1164.43, 90.09],		[1376.01, 89.88],		[1634.04, 89.52],		[1935.70, 88.95],		[2231.95, 88.20],		[2683.24, 87.06],
+		[3147.53, 85.66],		[3629.24, 84.16],		[4267.69, 82.22],		[5018.45, 79.92],		[5944.91, 76.99],		[7007.91, 73.73]    ]
+    let case41Data = [	[2.00, 38.06],  		[2.18, 42.28],  		[2.30, 44.35],  		[2.48, 46.44],  		[2.60, 47.42],  		[2.70, 47.96],  		[2.78, 47.96],
+		[2.85, 47.78],  		[2.90, 47.42],  		[2.95, 47.04],  		[3.00, 46.65],  		[3.30, 42.28],  		[3.48, 38.06],  		[3.60, 34.81],  		[3.70, 32.04],
+		[3.78, 29.54],  		[3.85, 26.02],  		[3.90, 23.52],  		[21.2, 43.95]      ];
+    let case42Data = [  [2.00, 61.40],   		[2.18, 65.69],  		[2.30, 68.56],  		[2.48, 71.72],  		[2.60, 73.22],  		[2.70, 73.87],  		[2.78, 74.12],
+		[2.85, 74.03],  		[2.90, 73.78],  		[2.95, 73.52],  		[3.00, 72.98],  		[3.30, 66.53],  		[3.48, 60.26],  		[3.60, 53.98],  		[3.70, 48.46],
+		[3.78, 43.81],  		[3.85, 39.08],  		[3.90, 34.81],  		[3.95, 30.88]    ]
   </script>
 
   <!--  case 按钮切换 -->
@@ -421,9 +285,7 @@
         data11=[];data21=[];data22=[];data31=[];data32=[];data41=[];data42=[];
         var chart_length = chart.series.length;
         for(var i=0;i<chart_length;i++)
-        {
-          chart.series[0].remove();
-        }
+        {  chart.series[0].remove();  }
 
         chart.addSeries({
           data: [],
@@ -455,13 +317,13 @@
 
         chart.addSeries({
           data: [],
-          name: '18mm',
+          name: '2%c upstream',
           marker:{symbol:'circle',fillColor:'red'},
         });
 
         chart.addSeries({
           data: [],
-          name: '77mm',
+          name: '8%c upstream',
           marker:{symbol:'circle',fillColor:'#70C1B3'},
         });
 
@@ -541,17 +403,15 @@
 
         chart.addSeries({
           data: [],
-          name: '30 m/s',
+          name: 'V&#8734 30m/s',
           marker:{symbol:'circle',fillColor:'red'},
         });
 
-
         chart.addSeries({
           data: [],
-          name: '50 m/s',
+          name: 'V&#8734 50m/s',
           marker:{symbol:'circle',fillColor:'#70C1B3'},
         });
-
 
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(3).addClass('active');
@@ -578,18 +438,9 @@
     }
   </script>
 
-
-
   <!-- 滚动条事件 -->
   <script>
-    let data = [],
-   		data11 = [],
-      data21 = [],
-      data22 = [],
-      data31 = [],
-      data32 = [],
-      data41 = [],
-      data42 = [];
+    let data = [], data11 = [], data21 = [], data22 = [],  data31 = [], data32 = [],  data41 = [], data42 = [];
     $("#sliderCase1").slider();
     $("#sliderCase21").slider();
     $("#sliderCase22").slider();
@@ -745,7 +596,7 @@
       },
       yAxis: {
         title: {
-          text: 'ϕ_pp (dB/Hz)'
+          text: 'ϕ<sub>pp</sub>(dB/Hz)'
          },
         max: 83,
         min: 68
@@ -781,7 +632,7 @@
           },
           tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: 'ϕ_pp (dB/Hz)	:{point.y}, Frequency (Hz):{point.x}'
+            pointFormat: 'ϕ<sub>pp</sub>:{point.y}, Frequency (Hz):{point.x}'
           }
         }
       },

@@ -85,6 +85,7 @@
           <p><font size="3"; style="color:blue"> Morris P.J., Farassat, 2012, Acoustic Analogy and Alternative Theories for Jet Noise Prediction, AIAA Journal, Vol.40, No.4. 
           </p>	  
         </blockquote>
+	      
         <div class="row">
           <div class="col"><img style="width:780px;height:130px" src="img/jet/formula.png" alt=""></div>
           <div class="col">
@@ -105,22 +106,23 @@
           </div>
         </div>
 
-        <div id="container" style="width: 60% margin: 0 auto"></div>
+        
+	<div id="container" style="width: 60% margin: 0 auto"></div>
 
-        <!-- silder bar -->
-        <div id="sliderCase1Area">
+       	<div id="sliderCase1Area" style="display:none">
           <div class="row">
-            <div class="col-1">Frequency response</div>
+            <div class="col-1">Frequency response
+	    </div>
             <div class="col-11">
               <input id="sliderCase1" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
                 data-slider-max="26" data-slider-step="1" data-slider-value="-1" />
-            </div>
-          </div>
+           </div>
         </div>
+	<div>
 
         <div id="sliderCase2Area" style="display:none">
           <div class="row">
-            <div class="col-1">St, 50 deg
+            <div class="col-1">St, 50°
             </div>
             <div class="col-11">
               <input id="sliderCase21" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -129,7 +131,7 @@
           </div>
 
           <div class="row">
-            <div class="col-1">St 90 deg
+            <div class="col-1">St, 90°
             </div>
             <div class="col-11">
               <input id="sliderCase22" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -138,19 +140,18 @@
           </div>
 
           <div class="row">
-            <div class="col-1">St 130 deg
+            <div class="col-1">St, 130°
             </div>
             <div class="col-11">
               <input id="sliderCase23" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
                 data-slider-max="19" data-slider-step="1" data-slider-value="-1" />
             </div>
           </div>
-
-        </div>
+		</div>
 
         <div id="sliderCase3Area" style="display:none">
           <div class="row">
-            <div class="col-1">St Mj = 0,5
+            <div class="col-1">St, M=0.5
             </div>
             <div class="col-11">
               <input id="sliderCase31" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -159,7 +160,7 @@
           </div>
 
           <div class="row">
-            <div class="col-1">St Mj = 0,7
+            <div class="col-1">St, M=0.7
             </div>
             <div class="col-11">
               <input id="sliderCase32" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -168,7 +169,7 @@
           </div>
 
           <div class="row">
-            <div class="col-1">St Mj = 1,47
+            <div class="col-1">St, M=1.47
             </div>
             <div class="col-11">
               <input id="sliderCase33" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -208,7 +209,7 @@
       console.log($(nav));}
   </script>
 
-  <script>
+	  <script>
     let cases = [{title: 'Case 1: Frequency response',
         	  desc: 'A jet operated with an exit velocity corresponding to M=0.9 with D=5cm, the observer location is at 90 degrees with respect to the jet axis, at a distance of 72D from it. Frequency is reported in non-dimensional Strouhal number (St)ance of 72D.'},
  		 {title: 'Case 2: Jet directivity',
@@ -434,17 +435,17 @@
 
         chart.addSeries({
           data: [],
-          name: 'Directivity, 50 degrees from jet axis',
+          name: 'Dir. 50° from jet axis',
           marker:{symbol:'circle',fillColor:'red'},
         });
         chart.addSeries({
           data: [],
-          name: 'Directivity, 90 degrees from jet axis',
+          name: 'Dir. 90° from jet axis',
           marker:{symbol:'circle',fillColor:'#70C1B3'},
         });
         chart.addSeries({
           data: [],
-          name: 'Directivity, 130 degrees from jet axis',
+          name: 'Dir. 130° from jet axis',
           marker:{symbol:'circle',fillColor:'#247BA0'}
         });
 

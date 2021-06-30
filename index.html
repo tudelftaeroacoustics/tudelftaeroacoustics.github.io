@@ -385,7 +385,7 @@
     function caseAction(caseBtn) {
       console.log('case', $(caseBtn).text());
       let btnText = $(caseBtn).text().trim();
-      if ('Case 1: Frequency response' === btnText) {
+      if (cases[0].title === btnText) {
         console.log('case', "Case 1");
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(0).addClass('active');
@@ -395,13 +395,11 @@
         $('#sliderCase3Area').hide();
         $('#sliderCase1Area').show();
 
-        console.log("Case1",chart.series.length)
         var chart_length = chart.series.length;
         for(var i=0;i<chart_length;i++)
         {
           chart.series[0].remove();
         }
-        console.log("Case1",chart.series.length)
 
         chart.addSeries({
           data: [],
@@ -409,7 +407,6 @@
           showInLegend: false,
           marker:{symbol:'circle',fillColor:'red'},
         });
-        console.log("Case1",chart.series.length)
 
 	chart.yAxis[0].update({
           max: 70,
@@ -422,17 +419,14 @@
 
         $("#sliderCase1").slider('refresh');
         
+      } else if (cases[1].title === btnText) {
 
-      } else if ('Case 2: Reference Location' === btnText) {
-
-        console.log("Case2",chart.series.length)
-        var chart_length = chart.series.length;
+         var chart_length = chart.series.length;
         for(var i=0;i<chart_length;i++)
         {
           chart.series[0].remove();
         }
-        console.log("Case2",chart.series.length)
-
+    
         chart.addSeries({
           data: [],
           name: 'Dir. 50° from jet axis',
@@ -449,7 +443,7 @@
           marker:{symbol:'circle',fillColor:'#247BA0'}
         });
 
-        console.log("Case2",chart.series.length)
+    
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(1).addClass('active');
         $('#caseTitle').text(cases[1].title);
@@ -471,7 +465,7 @@
         $("#sliderCase22").slider('refresh');
         $("#sliderCase23").slider('refresh');
 
-      } else if ('Case 3: Mach Number' === btnText) {
+      } else if (cases[2].title === btnText) {
 
         var chart_length = chart.series.length;
         for(var i=0;i<chart_length;i++)
@@ -522,7 +516,13 @@
   </script>
 
   <script>
-    let data = [];
+    let data = [],
+	data21 = [],
+      	data22 = [],
+      	data23 = [],
+      	data31 = [],
+      	data32 = [],
+      	data33 = [];
     $("#sliderCase1").slider();
     $("#sliderCase21").slider();
     $("#sliderCase22").slider();
@@ -542,99 +542,90 @@
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
         data.push(case1Data[i]);
-
         chart.series[0].setData(data);
       }
     });
 
     $("#sliderCase21").on("slide", function (slideEvt) {
-      console.log('sliderCase21', slideEvt.value)
       if (-1 === slideEvt.value) {
-        data21 = [];
-        chart.series[0].setData(data21);
+	 data = [];
+         chart.series[0].setData(data);
       }
       else
       {
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
         data.push(case21Data[i]);
-
         chart.series[0].setData(data);
       }
     });
 
     $("#sliderCase22").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data22 = [];
-        chart.series[1].setData(data22);
+        data = [];
+        chart.series[1].setData(data);
       }
       else
       {
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
         data.push(case22Data[i]);
-
         chart.series[1].setData(data);
       }
     });
 
     $("#sliderCase23").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data23 = [];
-        chart.series[2].setData(data23);
+        data = [];
+        chart.series[2].setData(data);
       }
       else
       {
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
         data.push(case23Data[i]);
-
         chart.series[2].setData(data);
       }
     });
 
-
     $("#sliderCase31").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data31 = [];
-        chart.series[0].setData(data31);
+        data = [];
+        chart.series[0].setData(data);
       }
       else
       {
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
-        data.push(case31Data[i]);
-
+        data.push(caseData31[i]);
         chart.series[0].setData(data);
       }
     });
 
     $("#sliderCase32").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data32 = [];
-        chart.series[1].setData(data32);
+        data = [];
+        chart.series[1].setData(data);
       }
       else
       {
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
         data.push(case32Data[i]);
-
         chart.series[1].setData(data);
       }
     });
 
     $("#sliderCase33").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
-        data33 = [];
-        chart.series[2].setData(data33);
+        data = [];
+        chart.series[2].setData(data);
       }
       else
       {
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
         data.push(case33Data[i]);
-
         chart.series[2].setData(data);
       }
     });
@@ -645,7 +636,6 @@
     Highcharts.setOptions({
       colors: ['#70C1B3', '#247BA0', '#F3FFBD', '#B2DBBF']
     });
-
 
     var chart = Highcharts.chart('container', {
 

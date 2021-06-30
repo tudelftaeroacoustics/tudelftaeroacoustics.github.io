@@ -28,33 +28,33 @@
             <li class="nav-item">
               <a class="nav-link active"   href="index.html" target="_self">
                 <span data-feather="file"></span>
-                Jet Noise<span class="sr-only">(current)</span>
+                Jet noise - Lighthill's approach
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine1.html"  target="_self">
                 <span data-feather="file"></span>
-                Wind Turbine Noise - surface pressure fluctuations
+                Wind turbine noise - surface pressure fluctuations
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine2.html"  target="_self">
                 <span data-feather="file"></span>
-                Wind Turbine Noise - predicted noise in the far field
+                Wind turbine noise - predicted noise in the far field
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link"  href="Propeller.html"  target="_self">
                 <span data-feather="file"></span>
-                Propeller Noise - tonal components
+                Propeller noise - tonal components
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link"  href="WingFlap.html"  target="_self">
                 <span data-feather="file"></span>
-                Cavity Noise - frequency analysis
+                Cavity noise - frequency analysis
               </a>
             </li>
 
@@ -64,11 +64,11 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Jet Noise</h1>
+          <h1 class="h2">Jet noise - Lighthill's approach</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Frequency response</button>
-              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Reference Location</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Jet directivity</button>
               <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 3: Mach Number </button>
             </div>
           </div>
@@ -87,15 +87,14 @@
 
         <div class="row" style="margin-top:30px;">
           <div class="col">
-            <h4 id="caseTitle" class="text-primary">Case 1: Frequency 𝝎</h4>
+            <h4 id="caseTitle" class="text-primary">Case 1: Frequency response</h4>
           </div>
 
         </div>
-        <!-- <div style="width:100%;height:1500px; background-color:goldenrod;"></div> -->
         <div class="row" style="margin-bottom:30px;">
           <div class="col-12">
-            <h6 id="caseDesc">A jet is operating at Mj = 0.911 with D = 0.0508m, and the observer location is at 90
-              deg to the jet axis at a distance of 72D from the jet center. Frequency is reported in non-dimensional Strouhal number (St)</h6>
+            <h6 id="caseDesc">A jet operated with an exit velocity corresponding to M=0.9 with D=5cm, the observer location is at 90 degrees with respect to the 
+		    	     jet axis, at a distance of 72D from it. Frequency is reported in non-dimensional Strouhal number (St).</h6>
           </div>
         </div>
 
@@ -104,7 +103,7 @@
         <!-- silder bar -->
         <div id="sliderCase1Area">
           <div class="row">
-            <div class="col-1">Frequency</div>
+            <div class="col-1">Frequency response</div>
             <div class="col-11">
               <input id="sliderCase1" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
                 data-slider-max="26" data-slider-step="1" data-slider-value="-1" />
@@ -114,7 +113,7 @@
 
         <div id="sliderCase2Area" style="display:none">
           <div class="row">
-            <div class="col-1">St 50 deg
+            <div class="col-1">St, 50 deg
             </div>
             <div class="col-11">
               <input id="sliderCase21" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -192,39 +191,23 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-  <!-- icons -->
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
   <script>
     feather.replace();
   </script>
-  <!-- icons end -->
 
   <script>
     var sidebtn = function (nav) {
-      console.log($(nav));
-      // let navTitle = $(nav).text().trim();
-      // if('Wind Turbine' === navTitle){
-      //   $(nav).
-      // }
-    }
+      console.log($(nav));}
   </script>
 
-
-  <!-- 初始化数据 -->
   <script>
-    let cases = [{
-        title: 'Case 1: Frequency 𝝎',
-        desc: 'The jet is operating at Mj = 0.911 with D = 0.0508m, and the observer location is at 90 deg to the jetaxis at a distance of 72D. Frequency is reported in non-dimensional Strouhal number (St).'
-      },
-      {
-        title: 'Case 2: Reference Location',
-        desc: 'The jet is operating at Mj = 1 with D = 0.0508m, and the observer locations are from a distance of 100D, at 50 deg, 90 deg, and 130 deg, respectively. Frequency is reported in non-dimensional Strouhal number (St).'
-      },
-      {
-        title: 'Case 3: Mach Number',
-        desc: 'The jet is operating at Mj = 0,5, Mj = 0,7, and Mj = 1,47, respectively, with D = 0.0508m. And the observer location is from a distance of 100D, at 90 deg. Frequency is reported in non-dimensional Strouhal number (St).'
-      }
-    ]
+    let cases = [{title: 'Case 1: Frequency response',
+        	  desc: 'A jet operated with an exit velocity corresponding to M=0.9 with D=5cm, the observer location is at 90 degrees with respect to the jet axis, at a distance of 72D from it. Frequency is reported in non-dimensional Strouhal number (St)ance of 72D.'},
+ 		 {title: 'Case 2: Jet directivity',
+		  desc: 'A jet operated with an exit velocity corresponding to M=0.9 with D=5cm, the jet directivity is analyzed at a distance of 100D, from 50-90-130 degrees with respect to the jet-axis. Frequency is reported in non-dimensional Strouhal number (St).'},
+ 		 {title: 'Case 3: Mach Number',
+       		  desc: 'A jet with a D=5cm is operating by varying from M=0.5-0.7-1.47. The observer location is at a distance of 100D, 90 degrees from the jet axis. Frequency is reported in non-dimensional Strouhal number (St).'}]
     let case1Data = [
       [-1.7373, 36.2500],
       [-1.6313, 39.1300],
@@ -394,7 +377,7 @@
     function caseAction(caseBtn) {
       console.log('case', $(caseBtn).text());
       let btnText = $(caseBtn).text().trim();
-      if ('Case 1: Frequency 𝝎' === btnText) {
+      if ('Case 1: Frequency response' === btnText) {
         console.log('case', "Case 1");
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(0).addClass('active');
@@ -403,7 +386,6 @@
         $('#sliderCase2Area').hide();
         $('#sliderCase3Area').hide();
         $('#sliderCase1Area').show();
-
 
         console.log("Case1",chart.series.length)
         var chart_length = chart.series.length;
@@ -421,8 +403,7 @@
         });
         console.log("Case1",chart.series.length)
 
-
-        chart.yAxis[0].update({
+	chart.yAxis[0].update({
           max: 70,
           min: 20
         });
@@ -446,20 +427,19 @@
 
         chart.addSeries({
           data: [],
-          name: '50 deg',
+          name: 'Directivity, 50 degrees from jet axis',
           marker:{symbol:'circle',fillColor:'red'},
         });
         chart.addSeries({
           data: [],
-          name: '90 deg',
+          name: 'Directivity, 90 degrees from jet axis',
           marker:{symbol:'circle',fillColor:'#70C1B3'},
         });
         chart.addSeries({
           data: [],
-          name: '130 deg',
+          name: 'Directivity, 130 degrees from jet axis',
           marker:{symbol:'circle',fillColor:'#247BA0'}
         });
-
 
         console.log("Case2",chart.series.length)
         $('.btn-outline-secondary').removeClass('active');
@@ -469,8 +449,6 @@
         $('#sliderCase1Area').hide();
         $('#sliderCase3Area').hide();
         $('#sliderCase2Area').show();
-
-
 
         chart.yAxis[0].update({
           max: 130,
@@ -495,18 +473,18 @@
 
         chart.addSeries({
           data: [],
-          name: 'Mj = 0,5',
+          name: 'Jet exit M=0.5',
           marker:{symbol:'circle',fillColor:'red'},
         });
 
           chart.addSeries({
             data: [],
-            name: 'Mj = 0,7',
+            name: 'Jet exit M=0.7',
             marker:{symbol:'circle',fillColor:'#70C1B3'},
           });
           chart.addSeries({
             data: [],
-            name: 'Mj = 1,47',
+            name: 'Jet exit M=1.47',
             marker:{symbol:'circle',fillColor:'#247BA0'}
           });
 
@@ -517,7 +495,6 @@
         $('#sliderCase1Area').hide();
         $('#sliderCase2Area').hide();
         $('#sliderCase3Area').show();
-
 
         chart.yAxis[0].update({
           max: 120,
@@ -536,9 +513,6 @@
     }
   </script>
 
-
-
-  <!-- 滚动条事件 -->
   <script>
     let data = [];
     $("#sliderCase1").slider();
@@ -667,8 +641,6 @@
 
     var chart = Highcharts.chart('container', {
 
-
-
 		tooltip: {
 			formatter: function () {
 			return 'St:'+ Math.pow(10,this.x).toFixed(2) + ', SPL(dB):'+this.y;
@@ -678,7 +650,6 @@
 
 	 credits: {
         enabled: false
-      }, //去掉版权
       chart: {
         type: 'scatter',
         zoomType: 'xy'
@@ -737,11 +708,6 @@
               }
             }
           },
-
-          //tooltip: {
-          //  headerFormat: '<b>{series.name}</b><br>',
-          //  pointFormat: 'Frequency:'+ Math.pow(10,this.series) + ', SPL/dB:{point.y}'
-         // }
         }
       },
       series: [{

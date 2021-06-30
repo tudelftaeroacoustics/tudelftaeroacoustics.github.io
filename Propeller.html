@@ -35,26 +35,26 @@
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine1.html"  target="_self">
                 <span data-feather="file"></span>
-                Wind Turbine Noise-1
+                Wind turbine noise - surface pressure fluctuations 
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link "  href="WindTurbine2.html"  target="_self">
                 <span data-feather="file"></span>
-                Wind Turbine Noise-2
+                Wind turbine noise - predicted noise in the far field
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link active"  href="Propeller.html"  target="_self">
                 <span data-feather="file"></span>
-                Propeller Noise
+                Propeller noise - tonal components
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link"  href="WingFlap.html"  target="_self">
                 <span data-feather="file"></span>
-                Cavity Noise
+                Cavity noise - frequency response
               </a>
             </li>
 
@@ -89,31 +89,25 @@
           </p>	  				
         </blockquote>
         <div class="row">
-          <!-- 公式图片 -->
           <div class="col"><img style="width:660px;height:110px" src="img/propeller/formula.png" alt=""></div>
-          <!-- 弹框图片 -->
           <div class="col">
             <img style="width:180px;height:70px" src="img/click.png" alt="" data-toggle="modal" data-target="#exampleModal">
           </div>
         </div>
 
         <div class="row" style="margin-top:30px;">
-          <!-- <div class=""><img src="img/jet/jet-case1.png" alt=""></div> -->
           <div class="col">
-            <h4 id="caseTitle" class="text-primary">Case 1: Frequency 𝝎</h4>
+            <h4 id="caseTitle" class="text-primary">Case 1: Spectrum in frequency</h4>
           </div>
 
         </div>
-        <!-- <div style="width:100%;height:1500px; background-color:goldenrod;"></div> -->
         <div class="row" style="margin-bottom:30px;">
           <div class="col-12">
-            <h6 id="caseDesc">A propeller with D=0,24 m, the observer is located in the propeller disk plane at a distance of 6D, and the primary Blade Passage Frequency(BPF) is at 180 Hz.</h6>
+            <h6 id="caseDesc">A seven-blade propeller with D=0.21m is considered, the observer is located in the propeller disk plane at a distance of 6D, the blade is rotating at 180 Hz.</h6>
           </div>
         </div>
 
         <div id="container" style="width: 60% margin: 0 auto"></div>
-
-        <!-- silder bar -->
 
         <div id="sliderCase1Area">
           <div class="row">
@@ -127,7 +121,7 @@
 
         <div id="sliderCase2Area" style="display:none">
           <div class="row">
-            <div class="col-1">0 deg
+            <div class="col-1">Directivity, 0° from propeller axis
             </div>
             <div class="col-11">
               <input id="sliderCase21" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -136,7 +130,7 @@
           </div>
 
           <div class="row">
-            <div class="col-1">90 deg
+            <div class="col-1">Directivity, 90° from propeller axis
             </div>
             <div class="col-11">
               <input id="sliderCase22" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -148,7 +142,7 @@
 
         <div id="sliderCase3Area" style="display:none">
           <div class="row">
-            <div class="col-1">Mt=0,77
+            <div class="col-1">Relative Mach at the tip, Mt=0.77
             </div>
             <div class="col-11">
               <input id="sliderCase31" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -157,7 +151,7 @@
           </div>
 
           <div class="row">
-            <div class="col-1">Mt=0,83
+            <div class="col-1">Relative Mach at the tip, Mt=0.87
             </div>
             <div class="col-11">
               <input id="sliderCase32" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -182,7 +176,6 @@
     </div>
   </div>
 
-
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -190,8 +183,6 @@
   <script src="js/bootstrap-slider.js"></script>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
-
-
 
   <!-- icons -->
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
@@ -210,23 +201,13 @@
     }
   </script>
 
-
-
-  <!-- 初始化数据 -->
   <script>
-    let cases = [{
-        title: 'Case 1: Frequency 𝝎',
-        desc: 'A propeller with D=0,24 m, the observer is located in the propeller disk plane at a distance of 6D, and the primary Blade Passage Frequency(BPF) is at 180 Hz.'
-      },
-      {
-        title: 'Case 2: Reference Location',
-        desc: 'A propeller with 7 blades and D=0,208 m, the observer is located at a distance of 10D from the rotor, in the propeller disk plane (90 deg), and upstream of the rotation axis (0 deg), rexpectively. And the primary BPF is at 230 Hz.'
-      },
-      {
-        title: 'Case 3: Mach Number',
-        desc: ''
-      }
-    ]
+    let cases = [{title: 'Case 1: Spectrum in frequency',
+        	  desc: 'A seven-blade propeller with D=0.21m is considered, the observer is located in the propeller disk plane at a distance of 6D, the blade is rotating at 180 Hz.'},
+    		 {title: 'Case 2: Directivity',
+                  desc: 'A seven-blade propeller with D=0.21m is considered, the observer is located in the propeller disk plane at a distance of 10D at an angle of 90° with respect to the propeller axis, and upstream of it 0°, respectively. The propeller rotatates at 230Hz.'},
+      		 {title: 'Case 3: Mach Number',
+        	  desc: 'A seven-blade propeller with D=0.21m is considered, the observer is located in the propeller disk plane at a distance of 10D at an angle of 90°. The blade tip Mach number is varied between 0.77 and 0.83 by changing the rotational frequency.'}]
     let case11Data = [
       [1,55],
 			[2,41],

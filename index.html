@@ -230,7 +230,7 @@
         	  desc: 'A jet operated with an exit velocity corresponding to M=0.9 with D=5cm, the observer location is at 90 degrees with respect to the jet axis, at a distance of 72D from it. Frequency is reported in non-dimensional Strouhal number (St)ance of 72D.'},
  		 {title: 'Case 2: Jet directivity',
 		  desc: 'A jet operated with an exit velocity corresponding to M=0.9 with D=5cm, the jet directivity is analyzed at a distance of 100D, from 50-90-130 degrees with respect to the jet-axis. Frequency is reported in non-dimensional Strouhal number (St).'},
- 		 {title: 'Case 3: Mach number',
+ 		 {title: 'Case 3: Mach number effect',
        		  desc: 'A jet with a D=5cm is operating by varying from M=0.5-0.7-1.47. The observer location is at a distance of 100D, 90 degrees from the jet axis. Frequency is reported in non-dimensional Strouhal number (St).'}]
     let case1Data = [
       [-1.7373, 36.2500],
@@ -453,17 +453,17 @@
 
         chart.addSeries({
           data: [],
-          name: '50 deg',
+          name: 'Dir. 50° from jet axis',
           marker:{symbol:'circle',fillColor:'red'},
         });
         chart.addSeries({
           data: [],
-          name: '90 deg',
+          name: 'Dir. 90° from jet axis',
           marker:{symbol:'circle',fillColor:'#70C1B3'},
         });
         chart.addSeries({
           data: [],
-          name: '130 deg',
+          name: 'Dir. 130° from jet axis',
           marker:{symbol:'circle',fillColor:'#247BA0'}
         });
 
@@ -492,7 +492,7 @@
         $("#sliderCase22").slider('refresh');
         $("#sliderCase23").slider('refresh');
 
-      } else if ('Case 3: Mach number' === btnText) {
+      } else if ('Case 3: Mach number effect' === btnText) {
 
         var chart_length = chart.series.length;
         for(var i=0;i<chart_length;i++)
@@ -502,18 +502,18 @@
 
         chart.addSeries({
           data: [],
-          name: 'Mj = 0,5',
+          name: 'Nozzle: exit M=0.5',
           marker:{symbol:'circle',fillColor:'red'},
         });
 
           chart.addSeries({
             data: [],
-            name: 'Mj = 0,7',
+            name: 'Nozzle: exit M=0.7',
             marker:{symbol:'circle',fillColor:'#70C1B3'},
           });
           chart.addSeries({
             data: [],
-            name: 'Mj = 1,47',
+            name: 'Nozzle: exit M=1.47',
             marker:{symbol:'circle',fillColor:'#247BA0'}
           });
 

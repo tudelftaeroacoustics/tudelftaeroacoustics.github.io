@@ -98,7 +98,7 @@
         <!-- Title and conditions  -->
         <div class="row" style="margin-top:30px;">
           <div class="col">
-            <h4 id="caseTitle" class="text-primary">Case 1: Mode number</h4>
+            <h4 id="caseTitle" class="text-primary">Case 1: Mach number</h4>
           </div>
         </div>
         <div class="row" style="margin-bottom:30px;">
@@ -186,8 +186,8 @@
 
   <!-- 初始化数据 -->
   <script>
-    let cases = [{title: 'Case 1: Mode number',
-		  desc:'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus the L/D ratio of a cavity with flow at M=0.5.'},
+    let cases = [{title: 'Case 1: Mach number',
+		  desc:'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus the varying Mach number.'},
       {title: 'Case 2: Cavity shape',
         desc: 'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus the L/D ratio of a cavity with flow at M=0.5. We consider here the loudest mode 1.'}]
     let case11Data = [
@@ -494,7 +494,7 @@
           },
           tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: 'L/D:{point.x}, St:{point.y}'
+            pointFormat: 'Mach:{point.x}, St:{point.y}'
           }
         }
       },

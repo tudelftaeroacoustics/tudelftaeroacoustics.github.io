@@ -328,7 +328,7 @@
         chart.addSeries({
           data: [],
           name: 'L/D',
-          showInLegend: false,
+          showInLegend: true,
           marker:{symbol:'circle',fillColor:'red'},
         });
 
@@ -383,9 +383,7 @@
     $("#sliderCase13").on("slide", function (slideEvt) {
       if (-1 === slideEvt.value) {
         data = [];
-        chart.series[2].setData(data);
-      }
-
+        chart.series[2].setData(data); }
       else
       {
         data=[];
@@ -407,7 +405,6 @@
         data=[];
         for(var i=0;i<=slideEvt.value;i++)
         data.push(case21Data[i]);
-
         chart.series[0].setData(data);
       }
     });
@@ -489,9 +486,7 @@
       series: [{
         name: 'Mode 1, n=1',
         color: 'rgba(223, 83, 83, .5)',
-        data: []
-      }
-      ]
+        data: []  }]
     });
 
     chart.addSeries({
@@ -502,8 +497,7 @@
     chart.addSeries({
       data: [],
       name: 'Mode 3, n=3',
-      marker:{symbol:'circle',fillColor:'#247BA0'}
-    });
+      marker:{symbol:'circle',fillColor:'#247BA0'} });
   </script>
 
 </body>

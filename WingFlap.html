@@ -68,7 +68,7 @@
           <h1 class="h2">Cavity noise - frequency analysis</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
-              <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Mode number</button>
+              <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Mach number effect</button>
               <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Cavity shape
               </button>
             </div>
@@ -98,12 +98,12 @@
         <!-- Title and conditions  -->
         <div class="row" style="margin-top:30px;">
           <div class="col">
-            <h4 id="caseTitle" class="text-primary">Case 1: Mach number</h4>
+            <h4 id="caseTitle" class="text-primary">Case 1: Mach number effect</h4>
           </div>
         </div>
         <div class="row" style="margin-bottom:30px;">
           <div class="col-12">
-            <h6 id="caseDesc">The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus the L/D ratio of a cavity with flow at M=0.5.</h6>
+            <h6 id="caseDesc">The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus a varying Mach number in the equation.</h6>
           </div>
         </div>
 
@@ -154,7 +154,6 @@
   </div>
   </div>
 
-
   <!-- Modal -->
   <div class="modal fade" style="top:100px;left:-200px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -186,8 +185,8 @@
 
   <!-- 初始化数据 -->
   <script>
-    let cases = [{title: 'Case 1: Mach number',
-		  desc:'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus the varying Mach number.'},
+    let cases = [{title: 'Case 1: Mach number effectr',
+		  desc:'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus a varying Mach number in the equation.'},
       {title: 'Case 2: Cavity shape',
         desc: 'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus the L/D ratio of a cavity with flow at M=0.5. We consider here the loudest mode 1.'}]
     let case11Data = [
@@ -282,7 +281,6 @@
           marker:{symbol:'circle',fillColor:'#247BA0'}
         });
 
-
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(0).addClass('active');
         $('#caseTitle').text(cases[0].title);
@@ -334,7 +332,6 @@
           showInLegend: false,
           marker:{symbol:'circle',fillColor:'red'},
         });
-
 
         $("#sliderCase21").slider('refresh');
         // $('#sliderCase1').attr('data-slider-value',-1);

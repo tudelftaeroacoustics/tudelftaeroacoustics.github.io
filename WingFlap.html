@@ -68,9 +68,8 @@
           <h1 class="h2">Cavity noise - frequency analysis</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
-              <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Mach number effect</button>
-              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Cavity shape
-              </button>
+              <button class="btn btn-sm btn-outline-secondary active" onclick="caseAction(this)">Case 1: Mach number effect </button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="caseAction(this)">Case 2: Cavity shape </button>
             </div>
           </div>
         </div>
@@ -112,7 +111,7 @@
 
         <div id="sliderCase1Area">
           <div class="row">
-            <div class="col-1">Mode 1, L/D distribution
+            <div class="col-1">Mode 1, L/D:
             </div>
             <div class="col-11">
               <input id="sliderCase11" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -121,7 +120,7 @@
           </div>
 
           <div class="row">
-            <div class="col-1">Mode 2, L/D distribution
+            <div class="col-1">Mode 2, L/D:
             </div>
             <div class="col-11">
               <input id="sliderCase12" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -130,7 +129,7 @@
           </div>
 
           <div class="row">
-            <div class="col-1">Mode 3, L/D distribution
+            <div class="col-1">Mode 3, L/D:
             </div>
             <div class="col-11">
               <input id="sliderCase13" type="text" style="width:90%;padding-left: 100px;" data-slider-min="-1"
@@ -185,7 +184,7 @@
 
   <!-- 初始化数据 -->
   <script>
-    let cases = [{title: 'Case 1: Mach number effectr',
+    let cases = [{title: 'Case 1: Mach number effect',
 		  desc:'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus a varying Mach number in the equation.'},
       {title: 'Case 2: Cavity shape',
         desc: 'The Strouhal corresponding to the resonant frequencies (i.e. tonal noise heard) is plotted versus the L/D ratio of a cavity with flow at M=0.5. We consider here the loudest mode 1.'}]
@@ -311,7 +310,7 @@
         });
         chart.xAxis[0].update({
           max: 11,
-          min: 0
+          min: 1
         });
         $('.btn-outline-secondary').removeClass('active');
         $('.btn-outline-secondary').eq(1).addClass('active');
@@ -335,10 +334,7 @@
 
         $("#sliderCase21").slider('refresh');
         // $('#sliderCase1').attr('data-slider-value',-1);
-
       }
-
-
     }
   </script>
 
